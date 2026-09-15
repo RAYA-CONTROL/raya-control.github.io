@@ -1,71 +1,185 @@
-const $ = (s) => document.querySelector(s);
+const $ = selector => document.querySelector(selector);
 const methods = [
- {name:'Nominal MPC', detail:'Track the original plan', color:'#7c8174', threshold:32},
- {name:'Post hoc Learned Margin', detail:'Correct after planning', color:'#c38e64', threshold:37},
- {name:'In-solver Learned Margin', detail:'Plan with recoverability', color:'#7890a0', threshold:48},
- {name:'RAYA', detail:'Plan + let priorities yield', color:'#009E73', threshold:65},
+  {id:'nominal',name:'Nominal MPC',short:'Nominal',color:'#f5b35b'},
+  {id:'cbf',name:'In-solver CBF',short:'In-solver CBF',color:'#68bdf3'},
+  {id:'posthoc',name:'Post hoc Learned Margin',short:'Post hoc',color:'#d69cf5'},
+  {id:'raya',name:'RAYA',short:'RAYA',color:'#009E73'}
 ];
-const state = {platform:'drone', intensity:38, paused:matchMedia('(prefers-reduced-motion: reduce)').matches, time:0, sweep:false};
-const cards = methods.map((m,i)=>{
- const el=document.createElement('article');el.className='method-card'+(i===3?' raya':'');el.style.setProperty('--method',m.color);
- el.innerHTML=`<div class="method-header"><div class="method-name"><span class="dot"></span>${i===3?'<span class="raya-name">RAYA</span>':m.name}${i===3?'<b>OURS</b>':''}</div><p>${m.detail}</p></div><canvas aria-label="${m.name} illustrative robot trajectories"></canvas><div class="method-status"><span><strong class="count">12 / 12</strong> in control</span><span class="status-label">Tracking</span></div>`;
- $('#method-grid').append(el);return {el,canvas:el.querySelector('canvas'),ctx:el.querySelector('canvas').getContext('2d'),m,i};
-});
-function survivors(i){let threshold=methods[i].threshold+(state.platform==='car'?(i===3?3:-3):0);return Math.max(0,Math.min(12,12-Math.floor(Math.max(0,state.intensity-threshold)/2.6)));}
-function update(){
- $('#intensity').value=state.intensity;$('#disturbance').value=state.intensity;
- $('#disturbance').style.background=`linear-gradient(to right,var(--green) ${state.intensity}%,#dce3d5 ${state.intensity}%)`;
- $('#regime').textContent=state.intensity<30?'Within the comfort zone':state.intensity<55?'Building pressure':state.intensity<82?'Recovery matters':'Beyond the envelope';
- cards.forEach(({el,i})=>{const n=survivors(i);el.querySelector('.count').textContent=`${n} / 12`;const label=el.querySelector('.status-label');label.textContent=n===0?'Control lost':n<12?'Losing control':i===3&&state.intensity>35?'Yielding':'Tracking';label.classList.toggle('loss',n<12);});
- const text=state.intensity<30?'With room to spare, all four methods follow the task. Add more disturbance to reveal the difference.':state.intensity<55?'The original plan starts spending the authority needed for recovery. RAYA begins to let tracking yield.':state.intensity<82?'As other methods lose control, RAYA trades tracking precision for recovery. Watch the green robots give the path more room.':'Control authority is finite. Even RAYA cannot recover once the disturbance overwhelms the platform.';
- $('#insight').innerHTML=text.replace(/\bRAYA\b/g, '<span class="raya-name">RAYA</span>');$('#pause').textContent=state.paused?'▶':'Ⅱ';$('#pause').setAttribute('aria-label',state.paused?'Resume animation':'Pause animation');
- $('#sweep').textContent=state.sweep?'Stop sweep ■':'Run disturbance sweep ↗';
-}
-$('#disturbance').addEventListener('input',e=>{state.intensity=Number(e.target.value);state.sweep=false;update();});
-const tabs=[...document.querySelectorAll('[data-platform]')];
-tabs.forEach(btn=>btn.addEventListener('click',()=>{
- state.platform=btn.dataset.platform;state.time=0;
- tabs.forEach(b=>{const selected=b===btn;b.classList.toggle('active',selected);b.setAttribute('aria-selected',selected);b.tabIndex=selected?0:-1;});
- $('#demo-panel').setAttribute('aria-labelledby',btn.id);
- $('#disturbance-label').textContent=state.platform==='drone'?'Disturbance intensity':'Grip-loss intensity';
- $('#disturbance-subtitle').textContent=state.platform==='drone'?'Downward gusts · shared across controllers':'Slippery patches · shared across controllers';update();
-}));
-$('.tabs').addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const index=e.key==='Home'?0:e.key==='End'?1:1-tabs.indexOf(document.activeElement);tabs[index].focus();tabs[index].click();}});
-$('#pause').addEventListener('click',()=>{state.paused=!state.paused;update();});
-$('#reset').addEventListener('click',()=>{state.time=0;state.intensity=38;state.sweep=false;update();});
-$('#sweep').addEventListener('click',()=>{state.sweep=!state.sweep;if(state.sweep){state.intensity=0;state.paused=false;}update();});
-function prepare(canvas){const rect=canvas.getBoundingClientRect(), dpr=Math.min(devicePixelRatio||1,2);if(canvas.width!==Math.round(rect.width*dpr)||canvas.height!==Math.round(rect.height*dpr)){canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);}const ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,rect.width,rect.height);return {ctx,w:rect.width,h:rect.height};}
-function path(ctx,points,color,width=1,dash=[]){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dash);ctx.stroke();ctx.setLineDash([]);}
-function drone(ctx,x,y,size,color,tilt=0,dead=false){ctx.save();ctx.translate(x,y);ctx.rotate(tilt);ctx.strokeStyle=color;ctx.fillStyle=dead?'#ac9b83':color;ctx.lineWidth=size*.2;ctx.beginPath();ctx.moveTo(-size,-size*.43);ctx.lineTo(size,size*.43);ctx.moveTo(-size,size*.43);ctx.lineTo(size,-size*.43);ctx.stroke();for(const a of [-1,1])for(const b of [-1,1]){ctx.beginPath();ctx.ellipse(a*size,b*size*.43,size*.65,size*.23,0,0,Math.PI*2);ctx.strokeStyle=dead?'#b6a890':color;ctx.lineWidth=size*.1;ctx.stroke();}ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(-size*.36,-size*.29,size*.72,size*.58,size*.17);ctx.fill();ctx.fillStyle='#eef4df';ctx.fillRect(-size*.12,-size*.16,size*.24,size*.11);ctx.restore();}
-function car(ctx,x,y,size,color,angle){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.fillStyle='#394239';for(const p of [-1,1]){ctx.fillRect(-size*.65,p*size*.48-2,size*.4,4);ctx.fillRect(size*.25,p*size*.48-2,size*.4,4);}ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(-size,-size*.42,size*2,size*.84,3);ctx.fill();ctx.fillStyle='#eaf1e1';ctx.fillRect(-size*.18,-size*.3,size*.55,size*.6);ctx.fillStyle='#f6edd5';ctx.fillRect(size*.8,-size*.28,2,size*.14);ctx.fillRect(size*.8,size*.13,2,size*.14);ctx.restore();}
-function scene({canvas,m,i}){
- const {ctx,w,h}=prepare(canvas);if(!w)return;const t=state.time,n=survivors(i),pressure=state.intensity/100;
- if(state.platform==='drone'){
-  const ground=h*.79;ctx.fillStyle=i===3?'#e2ead8':'#e9ecdf';ctx.beginPath();ctx.moveTo(0,ground-17);ctx.lineTo(w,ground-45);ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fill();
-  for(let j=0;j<8;j++)path(ctx,[[0,ground+j*14],[w,ground-28+j*14]],'#ced8c155');for(let j=-3;j<10;j++)path(ctx,[[w*.5,ground-55],[j*w/5,h]],'#ced8c155');
-  ctx.font='7px "DM Sans",sans-serif';ctx.fillStyle='#94a087';ctx.fillText('ILLUSTRATIVE FLIGHTS',12,h-12);
-  for(let j=0;j<22;j++){const x=((j*43+t*(35+pressure*100))%(w+50))-25,y=13+(j*31)%(h*.66);path(ctx,[[x,y],[x+9+pressure*12,y+pressure*5]],`rgba(129,151,113,${.12+pressure*.23})`);}
-  path(ctx,Array.from({length:61},(_,k)=>{const a=k/60*Math.PI*2;return [w/2+Math.sin(a)*w*.36,h*.43+Math.sin(2*a)*h*.12];}),'#b2bca0',1,[3,4]);
-  for(let j=0;j<12;j++){
-   const a=t*.55+j/12*Math.PI*2,failed=j>=n;let x=w/2+Math.sin(a)*w*.34,y=h*.43+Math.sin(2*a)*h*.12;
-   if(i===3&&!failed){x+=Math.sin(a)*pressure*7;y-=pressure*14;}
-   if(failed){const severity=Math.min(1,(state.intensity-(m.threshold+(12-j)*2.8)+10)/18);y+=(ground-y)*Math.max(.15,severity);x+=Math.sin(j*3)*8;}
-   const tilt=failed?.9+Math.sin(j)*.5:Math.cos(a)*.12+pressure*Math.sin(t*4+j)*.09;
-   ctx.fillStyle='#3448270b';ctx.beginPath();ctx.ellipse(x,ground+6,6,2,0,0,Math.PI*2);ctx.fill();
-   if(failed){ctx.globalAlpha=.5;path(ctx,[[x-5,y-20],[x,y-6]],'#b29070',1,[2,3]);}drone(ctx,x,y,w<180?4.3:5.5,failed?'#a2957c':m.color,tilt,failed);ctx.globalAlpha=1;
-  }
- } else {
-  ctx.fillStyle='#e5ebdc';ctx.fillRect(0,0,w,h);
-  const route=(a,offset=0)=>[w/2+Math.cos(a)*(w*.32+offset),h*.48+Math.sin(a)*(h*.32+offset)];
-  const pts=Array.from({length:100},(_,k)=>route(k/99*Math.PI*2));path(ctx,pts,'#ced7c3',38);path(ctx,pts,'#f8faf1',1,[5,5]);
-  ctx.fillStyle=`rgba(168,185,183,${.28+pressure*.35})`;ctx.beginPath();ctx.ellipse(w*.77,h*.52,17+pressure*10,30+pressure*27,-.35,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#7b8b79';ctx.font='7px "DM Sans",sans-serif';ctx.fillText('LOW-GRIP PATCH',w*.48,h-12);
-  for(let j=0;j<12;j++){const failed=j>=n,a=t*.43+j/12*Math.PI*2;let [x,y]=route(a,i===3&&!failed?-pressure*4:0);if(failed){[x,y]=route(j*.57,21+(j%3)*6);x=Math.max(12,Math.min(w-12,x));y=Math.max(13,Math.min(h-25,y));}car(ctx,x,y,w<180?5:6.5,failed?'#a99883':m.color,failed?j*1.7:Math.atan2(Math.cos(a)*h*.32,-Math.sin(a)*w*.32));}
- }
-}
-let last=0,sweepProgress=0,accum=0;
-function frame(now){const dt=Math.min((now-last)/1000||0,.05);last=now;if(!state.paused&&!document.hidden){state.time+=dt;if(state.sweep){sweepProgress+=dt*8;if(sweepProgress>=1){state.intensity=Math.min(100,state.intensity+Math.floor(sweepProgress));sweepProgress%=1;if(state.intensity===100)state.sweep=false;update();}}}accum+=dt;if(accum>.032){cards.forEach(scene);accum=0;}requestAnimationFrame(frame);}
-update();requestAnimationFrame(frame);
+const methodHTML = method => method.id==='raya' ? '<span class="raya-name">RAYA</span>' : method.name;
+const state = {robot:'quad',scenario:'figure8',level:10,seed:0,time:0,playing:false,speed:1};
+const datasets = {};
+let runs = [];
+let camera = {x:0,y:0,scale:150};
+const canvas = $('#recovery-scene'), ctx = canvas.getContext('2d');
+const background = new Image(); background.src='assets/videos/quad-scene.jpg';
+const clock = time => `${Math.floor(time/60)}:${String(Math.floor(time%60)).padStart(2,'0')}`;
+const duration = () => datasets[state.robot]?.duration || (state.robot==='quad'?14.05:40);
+const failureTime = run => run.failureIndex===null ? Infinity : run.samples[run.failureIndex][0];
+const sampleIndex = run => Math.max(0,Math.min(run.samples.length-1, Math.floor((state.time+0.000001)/(state.robot==='quad'?.05:.1))-1, run.failureIndex??Infinity));
 
-// Resource URLs will be supplied later; empty placeholders must not reload the page.
-document.querySelectorAll('[data-placeholder-link]').forEach(link => link.addEventListener('click', event => event.preventDefault()));
+$('#scene-legend').innerHTML=methods.map(m=>`<span><i style="background:${m.color}"></i>${methodHTML(m)}</span>`).join('');
+$('#controller-status').innerHTML=methods.map(m=>`<div style="border-color:${m.color}"><span class="status-method">${methodHTML(m)}</span><strong id="status-${m.id}">Loading…</strong></div>`).join('');
+function updateReplay(){
+  const quad=state.robot==='quad';
+  $('#disturbance-value').textContent=quad?`${state.level}×`:`μ = ${state.level.toFixed(2)}`;
+  const slider=$('#disturbance');slider.style.setProperty('--amount',`${100*(Number(slider.value)-Number(slider.min))/(Number(slider.max)-Number(slider.min))}%`);
+  $('#simulation-time').max=duration();$('#simulation-time').value=state.time;
+  $('#simulation-clock').textContent=`${state.time.toFixed(1)} / ${duration().toFixed(1)} s`;
+  $('#simulation-play').textContent=state.playing?'Pause replay':state.time>=duration()?'Replay':'Play replay';
+  methods.forEach((method,i)=>{
+    const run=runs[i],el=$(`#status-${method.id}`);
+    if(!run){el.textContent='Loading…';return;}
+    const failed=state.time+1e-6>=failureTime(run);
+    const text=failed?`× Failed at ${failureTime(run).toFixed(2)} s`:state.time>=duration()?`✓ Completed ${duration().toFixed(1)} s`:'Tracking';
+    if(el.textContent!==text)el.textContent=text;
+    el.classList.toggle('is-lost',failed);
+  });
+}
+function selectRuns(){
+  runs=methods.map(m=>datasets[state.robot]?.runs.find(r=>r.method===m.id&&r.scenario===state.scenario&&r.level===state.level&&r.seed===state.seed));
+  const ready=runs.every(Boolean);
+  if(ready&&state.robot==='quad'){
+    // Fit every wind level with the same map to the unobstructed wooden floor.
+    const points=datasets.quad.runs.filter(r=>r.scenario==='figure8'&&r.seed===0).flatMap(r=>r.samples.slice(0,r.failureIndex===null?undefined:r.failureIndex+1));
+    const xs=points.map(p=>p[1]),ys=points.map(p=>p[2]);
+    const left=Math.min(-1,...xs),right=Math.max(1,...xs),bottom=Math.min(-.6,...ys),top=Math.max(.6,...ys);
+    camera={x:(left+right)/2,y:(bottom+top)/2,scaleX:480/(right-left),scaleY:265/(top-bottom)};
+  }
+  $('#simulation-play').disabled=!ready;
+  $('#simulation-error').hidden=ready;
+  if(!ready){$('#simulation-error').textContent='These simulation samples could not load. Reload the page to try again.';state.playing=false;}
+  if(ready){
+    const survived=runs.filter(r=>r.survived).length;
+    const rayaSurvives=runs[3].survived;
+    const result=survived===4?'All four controllers complete this run.':survived===1&&rayaSurvives?'The three baselines fail; RAYA completes the full run.':survived===0?'All four reach their limits at this disturbance.':`${survived} of four controllers complete this run.`;
+    $('#recovery-insight').innerHTML=result.replace(/RAYA/g,'<span class="raya-name">RAYA</span>');
+  }
+  updateReplay();
+}
+function setRobot(robot){
+  state.robot=robot;state.time=0;state.playing=false;
+  const quad=robot==='quad';state.scenario=quad?'figure8':'strips_p4';state.level=quad?10:.3;state.seed=quad?0:50;
+  document.querySelectorAll('[data-robot]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.robot===robot));
+  $('#disturbance-label').textContent=quad?'Wind strength':'Friction loss';
+  const slider=$('#disturbance');slider.min=quad?6:0;slider.max=quad?12:4;slider.value=quad?10:2;
+  $('#level-min').textContent=quad?'6× · gentler':'μ = 0.40 · more grip';$('#level-max').textContent=quad?'12× · stronger':'μ = 0.20 · less grip';
+  $('#scene-title').textContent=quad?'How much wind can each controller withstand?':'Four controllers. One low-grip track.';
+  $('#scene-subtitle').textContent=quad?'Simulation trajectories on the wooden flight area · selected seed 0.':'Logged trajectories in a shared rendered scene · selected placement 50.';
+  $('#scene-watermark').textContent=quad?'SIMULATION DATA · HARDWARE BACKGROUND':'SIMULATION DATA · RENDERED TRACK';
+  selectRuns();
+}
+document.querySelectorAll('[data-robot]').forEach(b=>b.addEventListener('click',()=>setRobot(b.dataset.robot)));
+$('#disturbance').addEventListener('input',e=>{state.level=state.robot==='quad'?Number(e.target.value):Number((.4-.05*Number(e.target.value)).toFixed(2));selectRuns();});
+$('#show-outcome').addEventListener('click',()=>{state.time=duration();state.playing=false;updateReplay();});
+$('#simulation-time').addEventListener('input',e=>{state.time=Number(e.target.value);state.playing=false;updateReplay();});
+$('#simulation-play').addEventListener('click',()=>{if(state.time>=duration())state.time=0;state.playing=!state.playing;updateReplay();});
+$('#simulation-restart').addEventListener('click',()=>{state.time=0;state.playing=false;updateReplay();});
+$('#simulation-speed').addEventListener('change',e=>{state.speed=Number(e.target.value);});
+Promise.all(['quad','car'].map(async robot=>{
+  const response=await fetch(`assets/data/${robot}-replays.json`);
+  if(!response.ok)throw new Error('Missing simulation data');
+  datasets[robot]=await response.json();
+})).then(selectRuns).catch(()=>{$('#simulation-error').hidden=false;$('#simulation-error').textContent='Simulation data could not load. Reload the page to try again.';$('#simulation-play').disabled=true;});
+
+function stroke(points,color,width=1,dashed=false){
+  if(!points.length)return;
+  ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dashed?[6,7]:[]);ctx.stroke();ctx.setLineDash([]);
+}
+function drawDrone(x,y,color,angle){
+  ctx.save();ctx.translate(x,y);ctx.rotate(angle);
+  ctx.shadowColor='#0009';ctx.shadowBlur=5;
+  ctx.strokeStyle='#172024';ctx.lineWidth=6;stroke([[-10,-8],[10,8]],'#172024',6);stroke([[-10,8],[10,-8]],'#172024',6);
+  stroke([[-10,-8],[10,8]],color,3);stroke([[-10,8],[10,-8]],color,3);
+  for(const a of [-1,1])for(const b of [-1,1]){ctx.beginPath();ctx.ellipse(a*11,b*8,8,5,0,0,Math.PI*2);ctx.fillStyle='#d6dfe280';ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();}
+  ctx.fillStyle=color;ctx.fillRect(-4,-5,8,10);ctx.restore();
+}
+function drawCar(x,y,color,angle){
+  ctx.save();ctx.translate(x,y);ctx.rotate(-angle);
+  ctx.fillStyle='#111';for(const a of [-1,1])for(const b of [-1,1])ctx.fillRect(a*9-4,b*9-2,8,4);
+  ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(-17,-8,34,16,4);ctx.fill();ctx.fillStyle='#25333b';ctx.fillRect(-3,-6,9,12);ctx.fillStyle='#ffffdc';ctx.fillRect(13,-6,3,4);ctx.fillRect(13,2,3,4);ctx.restore();
+}
+function render(){
+  const bounds=canvas.getBoundingClientRect();if(!bounds.width)return;
+  const dpr=Math.min(devicePixelRatio||1,2);
+  if(canvas.width!==Math.round(bounds.width*dpr)||canvas.height!==Math.round(bounds.height*dpr)){canvas.width=Math.round(bounds.width*dpr);canvas.height=Math.round(bounds.height*dpr);}
+  ctx.setTransform(canvas.width/1100,0,0,canvas.height/619,0,0);ctx.clearRect(0,0,1100,619);
+  const quad=state.robot==='quad';
+  if(!quad&&runs.every(Boolean)){
+    window.renderTrackScene(ctx,{runs,methods,time:state.time,level:state.level,sampleIndex,failureTime});return;
+  }
+  if(quad&&background.complete&&background.naturalWidth){
+    ctx.drawImage(background,0,0,1100,619);
+    // Adjacent floor patch covers the original drone in the source frame.
+    ctx.drawImage(background,background.width*.55,background.height*.575,background.width*.06,background.height*.08,525,355,66,50);
+    ctx.fillStyle='#061a2040';ctx.fillRect(0,0,1100,619);
+  }else{ctx.fillStyle='#1c2e29';ctx.fillRect(0,0,1100,619);for(let x=0;x<1100;x+=50)stroke([[x,0],[x,619]],'#ffffff06');for(let y=0;y<619;y+=50)stroke([[0,y],[1100,y]],'#ffffff06');}
+  if(!runs.every(Boolean))return;
+  // One shared spatial map for all four methods, fixed throughout the replay.
+  // Quad view fits all four logged paths; no camera calibration is claimed.
+  const project=p=>quad?[570+(p[1]-camera.x)*camera.scaleX,425-(p[2]-camera.y)*camera.scaleY]:[550+p[1]*93,310-p[2]*110];
+  const ref=Array.from({length:240},(_,j)=>{const t=j/239*(quad?14.05:40);return project([t,quad?.9*Math.sin(.55*t):4*Math.sin(.15*t),quad?.45*Math.sin(1.1*t):1.5*Math.sin(.15*t)*Math.cos(.15*t),quad?1:0]);});
+  if(!quad){stroke(ref,'#8b99904d',55);stroke(ref,'#101f1a',50);}
+  stroke(ref,'#f5f5e5a0',1.5,true);
+  const projected=runs.map((r,i)=>{
+    const index=sampleIndex(r),point=r.samples[index],failed=state.time+1e-6>=failureTime(r);
+    stroke(r.samples.slice(0,index+1).map(project),methods[i].color+'aa',2.2);
+    return {point,index,failed,position:project(point),i};
+  });
+  // Failed rollouts hold at the first failed state; there is no invented fall.
+  projected.sort((a,b)=>Number(b.failed)-Number(a.failed)).forEach(({point,position,failed,i})=>{
+    const [x,y]=position;
+    const color=methods[i].color;
+    if(quad)drawDrone(x,y,color,point[4]);else drawCar(x,y,color,point[4]);
+    if(failed){
+      ctx.beginPath();ctx.arc(x,y,25,0,Math.PI*2);ctx.fillStyle='#b91c1c35';ctx.fill();
+      for(const width of [9,5]){stroke([[x-15,y-15],[x+15,y+15]],width===9?'#fff':'#ed2424',width);stroke([[x+15,y-15],[x-15,y+15]],width===9?'#fff':'#ed2424',width);}
+    }
+    const labelX=i%2?975:125,labelY=i<2?330:480;
+    stroke([[labelX,labelY+(i%2?-14:14)],[x,y]],color+'80',1);
+    ctx.font='bold 15px sans-serif';const text=methods[i].short,width=ctx.measureText(text).width;
+    ctx.fillStyle='#0c1d19e8';ctx.beginPath();ctx.roundRect(labelX-width/2-10,labelY-14,width+20,29,5);ctx.fill();ctx.fillStyle=color;ctx.textAlign='center';ctx.fillText(text,labelX,labelY+5);
+  });
+  ctx.textAlign='left';ctx.font='12px sans-serif';ctx.fillStyle='#ffffffd9';ctx.fillText(`${state.time.toFixed(2)} s`,1010,32);
+}
+
+// Each hardware condition has an independent transport. Clips begin at visually selected takeoff.
+const trialGroups=[];
+document.querySelectorAll('[data-trials]').forEach(element=>{
+  const videos=[...element.querySelectorAll('video')],button=element.querySelector('[data-play]'),slider=element.querySelector('[data-time]'),output=element.querySelector('[data-clock]'),speed=element.querySelector('[data-speed]'),error=element.querySelector('.trial-error');
+  const group={videos,playing:false,time:0,speed:1,generation:0};trialGroups.push(group);
+  const length=()=>Math.max(0,...videos.map(v=>Number.isFinite(v.duration)?v.duration:0));
+  const master=()=>videos.reduce((a,b)=>(b.duration||0)>(a.duration||0)?b:a);
+  const update=()=>{slider.max=length()||1;slider.value=group.time;output.textContent=`${clock(group.time)} / ${clock(length())}`;button.textContent=group.playing?'Pause all':'Play all four';button.disabled=videos.some(v=>v.readyState<1);};
+  group.pause=()=>{group.generation++;group.playing=false;videos.forEach(v=>v.pause());update();};
+  const seek=time=>{group.time=Math.max(0,Math.min(length(),time));videos.forEach(v=>{if(v.readyState>=1)v.currentTime=Math.min(group.time,Math.max(0,v.duration-.04));});update();};
+  const play=async()=>{
+    trialGroups.forEach(g=>g.pause());state.playing=false;updateReplay();
+    if(group.time>=length()-.1)seek(0);
+    group.playing=true;error.hidden=true;const generation=++group.generation;update();
+    try{await Promise.all(videos.map(v=>{v.playbackRate=group.speed;if(group.time>=v.duration-.05)return;return v.play();}));if(generation!==group.generation&&!group.playing)videos.forEach(v=>v.pause());}
+    catch{group.pause();error.hidden=false;error.textContent='Playback could not start. Try again, or use each video’s controls.';}
+  };
+  button.addEventListener('click',()=>group.playing?group.pause():play());
+  element.querySelector('[data-restart]').addEventListener('click',()=>{group.pause();seek(0);});
+  slider.addEventListener('input',()=>{const time=Number(slider.value);group.pause();seek(time);});
+  speed.addEventListener('change',()=>{group.speed=Number(speed.value);videos.forEach(v=>v.playbackRate=group.speed);});
+  videos.forEach(v=>{v.addEventListener('loadedmetadata',update);v.addEventListener('loadeddata',update);v.addEventListener('error',()=>{group.pause();error.hidden=false;error.textContent='A recording could not load. Reload the page to retry.';});});
+  group.tick=()=>{
+    if(!group.playing)return;
+    const leader=master();group.time=leader.currentTime;
+    videos.forEach(v=>{if(v===leader)return;if(group.time>=v.duration-.05){if(!v.paused)v.pause();if(Math.abs(v.currentTime-(v.duration-.04))>.1)v.currentTime=Math.max(0,v.duration-.04);}else if(Math.abs(v.currentTime-group.time)>.2)v.currentTime=group.time;});
+    if(leader.ended){group.time=length();group.pause();}update();
+  };
+  update();
+});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){state.playing=false;trialGroups.forEach(g=>g.pause());document.querySelectorAll('video').forEach(v=>v.pause());updateReplay();}});
+let previous=0,lastPaint=0;
+function frame(now){
+  const dt=Math.min(.1,(now-previous)/1000||0);previous=now;
+  if(state.playing&&!document.hidden){state.time=Math.min(duration(),state.time+dt*state.speed);if(state.time>=duration())state.playing=false;}
+  if(now-lastPaint>40){render();updateReplay();trialGroups.forEach(g=>g.tick());lastPaint=now;}
+  requestAnimationFrame(frame);
+}
+setRobot('quad');
+requestAnimationFrame(frame);
+document.querySelectorAll('[data-placeholder-link]').forEach(link=>link.addEventListener('click',event=>event.preventDefault()));

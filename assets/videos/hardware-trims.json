@@ -1,0 +1,61 @@
+{
+  "basis": "Opening waits removed at visually selected takeoff onset. Approximate video alignment, not sensor-timestamp synchronization. Entire remaining flight retained at original speed. Source files unchanged.",
+  "clips": [
+    {
+      "asset": "nominal-drag.mp4",
+      "source": "nominal-drag-topdown-trajectory.mp4",
+      "trimStartSeconds": 4.3,
+      "sourceDurationSeconds": 11.136,
+      "outputDurationSeconds": 6.8068
+    },
+    {
+      "asset": "cbf-drag.mp4",
+      "source": "mpc-cbf-drag-topdown-trajectory.mp4",
+      "trimStartSeconds": 2.65,
+      "sourceDurationSeconds": 18.41,
+      "outputDurationSeconds": 15.7157
+    },
+    {
+      "asset": "posthoc-drag.mp4",
+      "source": "posthoc-drag-topdown-trajectory (1).mp4",
+      "trimStartSeconds": 9.45,
+      "sourceDurationSeconds": 15.274,
+      "outputDurationSeconds": 5.772433
+    },
+    {
+      "asset": "raya-drag.mp4",
+      "source": "raya-drag-topdown-trajectory.mp4",
+      "trimStartSeconds": 2.25,
+      "sourceDurationSeconds": 34.816,
+      "outputDurationSeconds": 32.5325
+    },
+    {
+      "asset": "nominal-motor.mp4",
+      "source": "nominal-motor-topdown-trajectory (1).mp4",
+      "trimStartSeconds": 1.4,
+      "sourceDurationSeconds": 6.662,
+      "outputDurationSeconds": 5.238567
+    },
+    {
+      "asset": "cbf-motor.mp4",
+      "source": "mpc-cbf-motor-topdown-trajectory.mp4",
+      "trimStartSeconds": 0.8,
+      "sourceDurationSeconds": 14.443,
+      "outputDurationSeconds": 13.6136
+    },
+    {
+      "asset": "posthoc-motor.mp4",
+      "source": "posthoc-motor-topdown-trajectory.mp4",
+      "trimStartSeconds": 2.4,
+      "sourceDurationSeconds": 8.742067,
+      "outputDurationSeconds": 6.339667
+    },
+    {
+      "asset": "raya-motor.mp4",
+      "source": "raya-motor-loss-topdown-trajectory.mp4",
+      "trimStartSeconds": 12.6,
+      "sourceDurationSeconds": 42.197,
+      "outputDurationSeconds": 29.562867
+    }
+  ]
+}
