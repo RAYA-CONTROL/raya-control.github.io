@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Ishaan Mahajan, Charles Chen, Frederike Dümbgen, Brian Plancher">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="RAYA: Learning Where and When to Intervene for Robot Recovery. Research on recoverability-aware control for quadrotors and autonomous vehicles.">
+<title>RAYA: Learning Where and When to Intervene for Robot Recovery</title>
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<link rel="stylesheet" href="static/css/bulma.min.css">
+<link rel="stylesheet" href="static/css/nerfies.css">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+<!-- Adapted from https://github.com/nerfies/nerfies.github.io (CC BY-SA 4.0). No analytics. -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+<section class="hero publication-header">
+ <div class="hero-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column has-text-centered">
+  <h1 class="title is-1 publication-title"><span class="raya-name">RAYA</span>: Learning Where and When to Intervene for Robot Recovery</h1>
+  <div class="is-size-5 publication-authors">
+   <span class="author-block"><a href="https://ishaanmahajan.com" target="_blank" rel="noopener">Ishaan Mahajan</a><sup>1,2</sup>,</span>
+   <span class="author-block"><a href="https://www.linkedin.com/in/charles-chen-pi314159265/" target="_blank" rel="noopener">Charles Chen</a><sup>1,2</sup>,</span>
+   <span class="author-block"><a href="https://duembgen.github.io/" target="_blank" rel="noopener">Frederike Dümbgen</a><sup>1</sup>,</span>
+   <span class="author-block"><a href="https://brianplancher.com/" target="_blank" rel="noopener">Brian Plancher</a><sup>2</sup></span>
+  </div>
+  <div class="publication-affiliations"><span class="author-block"><sup>1</sup> Carnegie Mellon University</span><span class="author-block"><sup>2</sup> Dartmouth College</span></div>
+  <div class="publication-links">
+   <span class="link-block"><a class="external-link button is-normal is-rounded is-dark" href="" data-placeholder-link aria-disabled="true" aria-label="Paper (link coming soon)" title="Link coming soon"><span class="icon" aria-hidden="true"><img src="assets/icons/arxiv.svg" alt=""></span><span>Paper</span></a></span>
+   <span class="link-block"><a class="external-link button is-normal is-rounded is-dark" href="" data-placeholder-link aria-disabled="true" aria-label="Code (link coming soon)" title="Link coming soon"><span class="icon" aria-hidden="true"><img src="assets/icons/github.svg" alt=""></span><span>Code</span></a></span>
+   <span class="link-block"><a class="external-link button is-normal is-rounded is-dark" href="" data-placeholder-link aria-disabled="true" aria-label="Video (link coming soon)" title="Link coming soon"><span class="icon" aria-hidden="true"><img src="assets/icons/youtube.svg" alt=""></span><span>Video</span></a></span>
+  </div>
+ </div></div></div></div>
+</section>
+<section class="hero teaser">
+ <div class="container is-max-desktop"><div class="hero-body">
+  <figure><img class="framework-figure" src="assets/RAYA-framework.png" alt="RAYA framework: collect closed-loop rollouts, train a recoverability predictor and a reallocation scheduler, then deploy on quadrotors and autonomous vehicles.">
+  <figcaption class="subtitle has-text-centered"><span class="raya-name">RAYA</span> learns where recoverability should enter the controller and when task objectives should yield, enabling recovery under unseen disturbances.</figcaption></figure>
+ </div></div>
+</section>
+<section class="section abstract-section" id="abstract"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column is-four-fifths">
+ <h2 class="title is-3 has-text-centered">Abstract</h2>
+ <div class="content has-text-justified"><p>A robot can predict failure and still be unable to prevent it. By the time a safety mechanism reacts, the nominal plan may already have spent the control authority that recovery requires, and fixed task priorities may block whatever response remains. Our key insight is that both aspects are decided inside the controller. Recoverability must inform actions while they are chosen rather than veto them afterward, and task objectives must be adapted as recoverability shrinks. Building on this, we present <span class="raya-name">RAYA</span>, a hybrid learned–analytic framework that places a learned finite-horizon recoverability margin inside an optimal controller with hard constraints and pairs it with a bounded learned scheduler that shifts task weights to facilitate recovery. Across 7,200 simulation episodes per controller spanning quadrotor and autonomous-vehicle benchmarks, <span class="raya-name">RAYA</span> not only improves survival rates, but also transfers the learned components zero-shot to unseen trajectories, disturbances, plant shifts, and friction layouts. We developed an embedded realization of <span class="raya-name">RAYA</span> and deployed it onboard a 35g Crazyflie quadrotor. Across 40 combined hardware flights under wind with either aerodynamic mismatch or an unmodeled 40% motor-command loss, each of three baselines fails in all trials, while <span class="raya-name">RAYA</span> completes 10/10 six-cycle missions. Code and artifacts are open-sourced.</p></div>
+</div></div></div></section>
+<section class="section" id="method"><div class="container is-max-desktop">
+ <h2 class="title is-3 has-text-centered">Recoverability-Aware Yielding of Authority</h2>
+ <div class="content"><p>A robot can predict failure and still be unable to prevent it. A nominal plan can consume the control authority required for recovery, while fixed tracking priorities prevent the controller from using the options that remain. <span class="raya-name">RAYA</span> addresses both decisions within a single optimal controller.</p></div>
+ <div class="columns method-columns">
+  <div class="column"><h3 class="title is-5">Where: inside the optimizer</h3><p>A learned finite-horizon recoverability margin is locally linearized and incorporated into the model predictive control problem. Recovery information shapes the predicted trajectory while the current action is selected.</p></div>
+  <div class="column"><h3 class="title is-5">When: as recoverability shrinks</h3><p>A bounded learned scheduler reweights selected task objectives. Lateral tracking may yield on the quadrotor; position and speed tracking may yield on the car. The optimizer retains its pre-existing hard constraints.</p></div>
+ </div>
+</div></section>
+<section class="section experiments-section" id="experiments"><div class="container experiment-container">
+ <h2 class="title is-3 has-text-centered">Interactive Experiments</h2>
+ <div class="content experiment-intro"><p>Increase the disturbance to explore how control authority is lost. Compare nominal MPC, post hoc intervention, in-solver recoverability, and <span class="raya-name">RAYA</span> on quadrotor and autonomous-vehicle tasks.</p></div>
+<div class="lab"><div class="lab-top"><div class="tabs" role="tablist" aria-label="Robot platform"><button class="active" id="drone-tab" role="tab" aria-selected="true" aria-controls="demo-panel" data-platform="drone">↗ Quadrotor</button><button id="car-tab" role="tab" aria-selected="false" aria-controls="demo-panel" data-platform="car" tabindex="-1">⌁ Autonomous car</button></div><div class="lab-actions"><span class="demo-tag">ILLUSTRATIVE DEMO</span><button id="pause" class="icon-button" aria-label="Pause animation">Ⅱ</button><button id="reset" class="icon-button" aria-label="Reset experiment">↺</button></div></div><div id="demo-panel" role="tabpanel" aria-labelledby="drone-tab"><div class="control-row"><div class="control-title"><label for="disturbance" id="disturbance-label">Disturbance intensity</label><p id="disturbance-subtitle">Downward gusts · shared across controllers</p></div><div class="slider-wrap"><input type="range" id="disturbance" min="0" max="100" value="38" aria-describedby="demo-note"><div class="range-labels"><span>Calm</span><span>Challenging</span><span>Extreme</span></div></div><div class="intensity"><output for="disturbance" id="intensity">38</output><span>/ 100</span><small id="regime">Building pressure</small></div></div><div class="method-grid" id="method-grid"></div><div class="lab-insight"><span class="insight-mark">↳</span><p id="insight" aria-live="polite"></p><button id="sweep">Run disturbance sweep ↗</button></div></div></div><p id="demo-note" class="fine-print">An explanatory animation, not a physics simulation or replay. Robot counts and failure thresholds are illustrative; they are not measured survival rates. At extreme disturbance, every method—including <span class="raya-name">RAYA</span>—can fail. See the actual experiments below.</p>
+</div></section>
+<section class="section" id="results"><div class="container is-max-desktop">
+ <h2 class="title is-3 has-text-centered">Simulation Results</h2>
+ <div class="content"><p>We evaluate 7,200 simulation episodes per controller: 4,200 quadrotor episodes and 3,000 autonomous-vehicle episodes. Learned components remain fixed during evaluation, including zero-shot tests on unseen trajectories, disturbance processes, plant shifts, and friction layouts.</p></div>
+ <figure class="research-figure"><img src="assets/recoverable-operating-envelope-quad.png" loading="lazy" alt="Figure 2: quadrotor survival across wind scales and zero-shot transfer to held-out evaluation conditions."><figcaption><strong>Quadrotor disturbance robustness and zero-shot transfer.</strong> The interpolated 50%-survival disturbance threshold increases from 7.335 to 7.950 m/s² (+8.4%). At disturbance multiplier 8, Figure-8 survival increases from 47% to 62%. At the strongest disturbances, survival collapses across controllers as actuation limits are reached.</figcaption></figure>
+ <figure class="research-figure"><img src="assets/recoverable-operating-envelope-f1tenth.png" loading="lazy" alt="Figure 3: F1TENTH survival and friction-loss versus exposure operating envelopes."><figcaption><strong>Autonomous-vehicle recovery under friction loss.</strong> <span class="raya-name">RAYA</span> expands the periodic-strip conditions meeting 50% survival from 5/15 for nominal MPC to 8/15. The interpolated 50%-survival exposure increases from 1.515 s for the strongest baseline to 2.096 s (+38.4%).</figcaption></figure>
+ <h3 class="title is-4">In-solver integration and objective reallocation</h3>
+ <div class="content"><p>Aggregate survival over all evaluated conditions is reported below. These measured results are independent of the illustrative disturbance slider.</p></div>
+ <div class="table-container"><table class="table is-fullwidth research-table"><colgroup><col class="method-column"><col class="result-column"><col class="result-column"></colgroup><thead><tr><th scope="col">Method</th><th scope="col">Quadrotor</th><th scope="col">AV</th></tr></thead><tbody><tr><th scope="row">Nominal MPC</th><td>34.24</td><td>35.93</td></tr><tr><th scope="row">Post hoc Learned Margin</th><td>34.45</td><td>39.43</td></tr><tr><th scope="row">In-solver Learned Margin</th><td>37.48</td><td>40.57</td></tr><tr class="raya-row"><th scope="row"><span class="raya-name">RAYA</span></th><td><strong>40.83</strong></td><td><strong>48.73</strong></td></tr></tbody></table></div>
+</div></section>
+<section class="section" id="hardware"><div class="container is-max-desktop">
+ <h2 class="title is-3 has-text-centered">Embedded Hardware Experiments</h2>
+ <div class="content"><p><span class="raya-name">RAYA</span> runs fully onboard the STM32F405 microcontroller of a 35 g Crazyflie quadrotor at 20 Hz. Each controller is tested in five flights under each of two conditions: a 3 g attachment with wind, and an unmodeled 40% front-left motor-command loss with wind.</p></div>
+ <figure class="research-figure hardware-figure"><img src="assets/RAYA-in-action.png" loading="lazy" alt="Crazyflie hardware testbed with two-fan airflow, a drag attachment, and front and top views of the flight path."><figcaption><strong>Six-cycle onboard recovery testbed.</strong> Both conditions use the same Figure-8 mission under two-fan airflow. No controller receives a measurement or model of the disturbance or mismatch.</figcaption></figure>
+ <div class="table-container"><table class="table is-fullwidth research-table"><colgroup><col class="method-column"><col class="result-column"><col class="result-column"></colgroup><thead><tr><th scope="col">Method</th><th scope="col">3 g attachment + wind</th><th scope="col">40% M1 loss + wind</th></tr></thead><tbody><tr><th scope="row">Nominal MPC</th><td>0 / 5</td><td>0 / 5</td></tr><tr><th scope="row">In-solver CBF</th><td>0 / 5</td><td>0 / 5</td></tr><tr><th scope="row">Post hoc Learned Margin</th><td>0 / 5</td><td>0 / 5</td></tr><tr class="raya-row"><th scope="row"><span class="raya-name">RAYA</span></th><td><strong>5 / 5</strong></td><td><strong>5 / 5</strong></td></tr></tbody></table></div>
+ <div class="content"><p>One <span class="raya-name">RAYA</span> motor-loss flight contacted the floor, recovered, completed the remaining trajectory, and landed under control. Mission completion under motor loss is 5/5, with 4/5 flights completed without contact. The worst observed <span class="raya-name">RAYA</span> control-step latency is 44.52 ms, within the 50 ms onboard deadline.</p></div>
+</div></section>
+<section class="section" id="acknowledgments"><div class="container is-max-desktop"><h2 class="title is-3">Acknowledgments</h2><div class="content"><p>This project was supported by the National Science Foundation (Awards 2411369, 2535096). Any opinions, findings, conclusions, or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the funding organizations.</p></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="columns is-centered"><div class="column is-8"><div class="content">
+<p>This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p>This page is adapted from the <a href="https://nerfies.github.io/">Nerfies project website</a> and its <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.</p>
+</div></div></div></div></footer>
+</body></html>
