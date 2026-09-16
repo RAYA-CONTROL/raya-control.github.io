@@ -5,6 +5,36 @@
       "name": "Figure-8",
       "seed": 97,
       "defaultLevel": 12
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "seed": 0,
+      "defaultLevel": 11
+    },
+    {
+      "id": "line_y",
+      "name": "Y-line",
+      "seed": 7,
+      "defaultLevel": 10
+    },
+    {
+      "id": "star",
+      "name": "Star",
+      "seed": 7,
+      "defaultLevel": 10
+    },
+    {
+      "id": "turbulent",
+      "name": "Turbulent Wind",
+      "seed": 31,
+      "defaultLevel": 9
+    },
+    {
+      "id": "heavy",
+      "name": "Heavy Plant",
+      "seed": 7,
+      "defaultLevel": 10
     }
   ],
   "car": {
@@ -13,5 +43,5 @@
     "placement": 90,
     "defaultLevel": 0.3
   },
-  "selection": "Outcome-selected demonstrations. Seeds/placement remain fixed across each slider. Full-evaluation counts use all 100 seeds or placements per setting."
+  "selection": "Outcome-selected demonstrations. Each condition keeps one fixed evaluated seed across all nine controllers and seven wind levels. Full-evaluation counts use all 100 seeds or placements per setting."
 }

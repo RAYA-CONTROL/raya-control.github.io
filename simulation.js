@@ -15,7 +15,7 @@ const quadMethods = [
 ];
 
 const trialDuration=14.05;
-const state={level:11,time:0,playing:false,speed:2};
+const state={scenario:'figure8',level:12,time:0,playing:false,speed:2};
 let quad,runs=[],last=0,lastPaint=0,camera={x:0,y:0,scale:45};
 const canvas=$('#quad-film'),ctx=canvas.getContext('2d');
 const video=$('#car-simulation');let carGeneration=0,carWantsPlay=false,evaluationCells=[];
@@ -29,10 +29,18 @@ const failureTime=r=>r.failureIndex===null?Infinity:r.samples[r.failureIndex][0]
 const sampleIndex=r=>Math.max(0,Math.min(r.samples.length-1,Math.floor((state.time+1e-6)/.05)-1,r.failureIndex??Infinity));
 const methodHTML=m=>m.id==='raya'?'<span class="raya-name">RAYA</span>':m.name;
 $('#quad-legend').innerHTML=quadMethods.map((m,i)=>`<div class="film-legend-item"><span class="film-key" style="--method:${m.color}">${i+1}</span><div><strong>${methodHTML(m)}</strong><span class="visually-hidden" id="quad-status-${m.id}"></span></div></div>`).join('');
+const activeCondition=()=>quad.conditions.find(c=>c.id===state.scenario);
+function updateCamera(){
+ const points=quad.runs.filter(r=>r.scenario===state.scenario).flatMap(r=>r.samples.slice(0,r.failureIndex===null?undefined:r.failureIndex+1));
+ const xs=points.map(p=>p[1]),ys=points.map(p=>p[2]);camera.x=(Math.min(-1,...xs)+Math.max(1,...xs))/2;camera.y=(Math.min(-1,...ys)+Math.max(1,...ys))/2;
+ const u=points.map(p=>(p[1]-camera.x)-.55*(p[2]-camera.y));camera.scale=Math.min(55,240/(Math.max(...u)-Math.min(...u)));
+}
 function selectWind(){
- const wind=state.level,seed=quad.conditions[0].seed;
- runs=quadMethods.map(m=>quad.runs.find(r=>r.scenario==='figure8'&&r.level===wind&&r.seed===seed&&r.method===m.id));
+ const wind=state.level,condition=activeCondition(),seed=condition.seed;
+ runs=quadMethods.map(m=>quad.runs.find(r=>r.scenario===state.scenario&&r.level===wind&&r.seed===seed&&r.method===m.id));
  if(!runs.every(Boolean))throw new Error('Missing paired simulation trial');
+ $('#quad-mode').value=state.scenario;
+ $('#quad-seed').textContent=`Seed ${seed}`;
  $('#quad-wind-value').textContent=`${wind}×`;
  $('#quad-wind').value=wind;
  $('#quad-wind').setAttribute('aria-valuetext',`${wind} times wind multiplier`);
@@ -47,7 +55,7 @@ function updateQuad(){
  $('#quad-play').textContent=state.playing?'Pause':state.time>=trialDuration?'Play again':'Play';
  runs.forEach((r,i)=>{
   const el=$(`#quad-status-${quadMethods[i].id}`),failed=state.time+1e-6>=failureTime(r);
-  const cell=evaluationCells.find(c=>c.robot==='quad'&&c.scenario==='figure8'&&c.level===state.level&&c.method===r.method);
+  const cell=evaluationCells.find(c=>c.robot==='quad'&&c.scenario===state.scenario&&c.level===state.level&&c.method===r.method);
   const average=cell?` · Average success ${Math.round(100*cell.survived/cell.total)}%`:'';
   const label=failed?`FAILURE at t = ${failureTime(r).toFixed(2)} s${average}`:state.time>=trialDuration?`SUCCESS${average}`:'';
   if(el.textContent!==label)el.textContent=label;
@@ -83,7 +91,7 @@ function draw(){
   const project=(p,ground=false)=>{const x=p[1]-camera.x,y=p[2]-camera.y;return [160+(x-.55*y)*camera.scale,163+.32*(x+y)*camera.scale-(ground?0:p[3]*56)];};
   for(let x=-2;x<=2;x+=.5)stroke([project([0,x,-2,0]),project([0,x,2,0])],'#d3dfd6',.8);
   for(let y=-2;y<=2;y+=.5)stroke([project([0,-2,y,0]),project([0,2,y,0])],'#d3dfd6',.8);
-  stroke(quad.references.figure8.map(p=>project(p)),'#91a397',1.1,true);
+  stroke(quad.references[state.scenario].map(p=>project(p)),'#91a397',1.1,true);
   const index=sampleIndex(run),point=run.samples[index],failed=state.time+1e-6>=failureTime(run);
   const [x,y]=project(point),[sx,sy]=project(point,true);
   ctx.beginPath();ctx.ellipse(sx,sy,12,4,0,0,Math.PI*2);ctx.fillStyle='#3a554329';ctx.fill();
@@ -102,7 +110,7 @@ function draw(){
   ctx.fillStyle=method.color;ctx.beginPath();ctx.arc(26,28,11,0,Math.PI*2);ctx.fill();ctx.font='bold 12px sans-serif';ctx.fillStyle='white';ctx.textAlign='center';ctx.fillText(String(i+1),26,32);
   ctx.font='bold 13px sans-serif';ctx.textAlign='left';ctx.fillStyle=method.id==='raya'?'#009E73':'#344f3e';
   const name=method.name==='Sampling-based safety filter'?'Sampling-based safety filter':method.name;ctx.fillText(name,45,33);
-  const cell=evaluationCells.find(c=>c.robot==='quad'&&c.scenario==='figure8'&&c.level===state.level&&c.method===run.method);
+  const cell=evaluationCells.find(c=>c.robot==='quad'&&c.scenario===state.scenario&&c.level===state.level&&c.method===run.method);
   if(cell){
    const rate=Math.round(100*cell.survived/cell.total);
    ctx.fillStyle=failed?'rgba(255,255,255,.72)':state.time>=trialDuration?'rgba(255,255,255,.72)':'rgba(238,244,240,.92)';ctx.fillRect(9,184,302,37);
@@ -124,6 +132,11 @@ $('#quad-wind').addEventListener('input',e=>{
  if(!quad)return;
  state.level=Number(e.target.value);state.time=0;
  selectWind();updateQuad();draw();
+});
+$('#quad-mode').addEventListener('change',e=>{
+ if(!quad)return;
+ state.scenario=e.target.value;state.level=activeCondition().defaultLevel;state.time=0;
+ updateCamera();selectWind();updateQuad();draw();
 });
 $('#quad-speed').addEventListener('change',e=>{state.speed=Number(e.target.value);});
 async function playCar(){
@@ -152,11 +165,9 @@ fetch('assets/data/simulation-statistics.json').then(response=>{if(!response.ok)
 }).catch(()=>{$('#car-data-error').hidden=false;$('#car-data-error').textContent='Average survival rates could not load. Reload the page to retry.';});
 fetch('assets/data/quad-replays.json').then(response=>{if(!response.ok)throw new Error('Missing replay data');return response.json();}).then(data=>{
  quad=data;
- const points=quad.runs.flatMap(r=>r.samples.slice(0,r.failureIndex===null?undefined:r.failureIndex+1));
- const xs=points.map(p=>p[1]),ys=points.map(p=>p[2]);camera.x=(Math.min(-1,...xs)+Math.max(1,...xs))/2;camera.y=(Math.min(-1,...ys)+Math.max(1,...ys))/2;
- const u=points.map(p=>(p[1]-camera.x)-.55*(p[2]-camera.y));camera.scale=Math.min(55,240/(Math.max(...u)-Math.min(...u)));
- state.level=quad.conditions[0].defaultLevel;
- selectWind();updateQuad();draw();$('#quad-play').disabled=false;$('#quad-wind').disabled=false;
+ $('#quad-mode').innerHTML=quad.conditions.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+ state.scenario=quad.conditions[0].id;state.level=quad.conditions[0].defaultLevel;
+ updateCamera();selectWind();updateQuad();draw();$('#quad-play').disabled=false;$('#quad-wind').disabled=false;$('#quad-mode').disabled=false;
 }).catch(()=>{$('#quad-error').hidden=false;$('#quad-error').textContent='Simulation recordings could not load. Reload the page to retry.';});
 function frame(now){
  const dt=Math.min(.1,(now-last)/1000||0);last=now;

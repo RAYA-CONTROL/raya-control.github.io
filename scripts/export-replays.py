@@ -49,7 +49,7 @@ quad_order=['nominal','sampling','posthoc_cbf','cbf','posthoc_hj','hj','posthoc'
 qa.sort(key=lambda arm:quad_order.index(arm[0]))
 ca=[('nominal','vanilla',['--mu-assumed','1.0']),('margin','car_saber_no_oracle_adaptive',['--mu-assumed','0.8',*learned,'--robust-active-horizon','1']),('posthoc','saber_posthoc',['--mu-assumed','1.0',*learned]),('raya','car_saber_no_oracle_adaptive',['--mu-assumed','0.8',*learned,*'--robust-active-horizon 1 --authority-beta-track 0.8 --authority-tau 0.5 --authority-deadband 0.5 --authority-gate rl_policy --authority-policy-smoothing 0.7 --authority-policy-feature-set no_mu'.split(),'--authority-policy-weights-file',str(a.repo/policies[1])])]
 tasks=[]
-for scenario,family,seed,wind_default in conditions[:1]:
+for scenario,family,seed,wind_default in conditions:
  for wind in range(6,13):
   for key,method,extra in qa:
    args=[*qb,'--trajectory',scenario if scenario not in ['heavy','turbulent'] else 'figure8','--wind-scale',str(wind),'--seed',str(seed)]
@@ -83,15 +83,15 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
   runs.append(r)
   if len(runs)%20==0:print(f'{len(runs)}/{len(tasks)}',flush=True)
 assert all(r['survived']==r['canonicalSurvived'] for r in runs),'Rerun/ledger mismatch: inspect before publishing.'
-manifest={'sourceCommit':stats['sourceCommit'],'selection':'Figure-8 seed 97 fixed across seven displayed wind values from 6-12 for all nine methods. RAYA completes every trial; the sampling-based safety filter fails at 10 and 11, and all eight baselines fail at 12. Car placement 90 is fixed across five friction values. Demonstrations are outcome-selected. Quadrotor counts use all 100 trials at each setting.','configurationNote':'Nine quad methods from Figure 2A, with frozen HJ and RPCBF configurations; final stage-1 learned-margin and scheduler; quad posthoc nominal-infeasibility fallback; canonical car posthoc.','sampleColumns':['time_s','x_m','y_m','z_m','angle_rad','authority_weight'],'policies':{p:hashlib.sha256((a.repo/p).read_bytes()).hexdigest() for p in policies},'episodes':[{k:v for k,v in r.items() if k!='samples'} for r in runs]}
+manifest={'sourceCommit':stats['sourceCommit'],'selection':'Six quadrotor conditions, each with one fixed evaluated seed across wind values 6-12 and all nine methods. Figure-8 uses seed 97: RAYA completes every trial; the sampling-based safety filter fails at 10 and 11, and all eight baselines fail at 12. Circle uses seed 0; Y-line, Star, and Heavy Plant use seed 7; Turbulent Wind uses seed 31. Car placement 90 is fixed across five friction values. Demonstrations are outcome-selected. Quadrotor counts use all 100 trials at each setting.','configurationNote':'Nine quad methods from Figure 2A, with frozen HJ and RPCBF configurations; final stage-1 learned-margin and scheduler; quad posthoc nominal-infeasibility fallback; canonical car posthoc.','sampleColumns':['time_s','x_m','y_m','z_m','angle_rad','authority_weight'],'policies':{p:hashlib.sha256((a.repo/p).read_bytes()).hexdigest() for p in policies},'episodes':[{k:v for k,v in r.items() if k!='samples'} for r in runs]}
 manifest['baselineTables']={str(path.relative_to(a.repo)):hashlib.sha256(path.read_bytes()).hexdigest() for path in (a.repo/'baselines_hj_rpcbf/tables').glob('*quad*') if path.is_file()}
 manifest['builds']={'quad':'GCC 14.2.0 / libstdc++, x86_64 macOS; standard-library wind RNG matches evaluation records.','car':'AppleClang 16.0.0 / libc++, arm64 macOS.'}
-manifest['validation']='All 83 replay success/failure outcomes agree with the corresponding canonical episode records. Full-evaluation cell counts reproduce the existing aggregate paper values and all nine quadrotor methods.'
+manifest['validation']=f'All {len(runs)} replay success/failure outcomes agree with the corresponding canonical episode records. Full-evaluation cell counts reproduce the existing aggregate paper values and all nine quadrotor methods.'
 (a.out/'provenance.json').write_text(json.dumps(manifest,indent=2))
 # Y-line uses the source's tabulated reference, rather than a guessed curve.
 h=(a.repo/'TinyMPC/examples/trajectory_data/quadrotor_20hz_y_axis_line.hpp').read_text();match=re.search(r'Xref_data\s*\[.*?\]\s*=\s*\{(.*?)\}',h,re.S);refnums=[float(x) for x in re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?',match.group(1))]
 reference={}
-for scenario,*_ in conditions[:1]:
+for scenario,*_ in conditions:
  points=[]
  for k in range(282):
   t=k*.05
@@ -103,7 +103,12 @@ for scenario,*_ in conditions[:1]:
  reference[scenario]=points
 for robot in ['quad','car']:
  payload={'sampleColumns':manifest['sampleColumns'],'duration':14.05 if robot=='quad' else 40,'runs':[{k:v for k,v in r.items() if k not in ['command','rawSha256','robot']} for r in runs if r['robot']==robot]}
- if robot=='quad':payload.update(conditions=[{'id':k,'name':{'turbulent':'Turbulent Wind','heavy':'Heavy Plant'}.get(k,f),'seed':s,'defaultLevel':w} for k,f,s,w in conditions[:1]],references=reference,methodOrder=quad_order)
+ if robot=='quad':payload.update(conditions=[{'id':k,'name':{'turbulent':'Turbulent Wind','heavy':'Heavy Plant'}.get(k,f),'seed':s,'defaultLevel':w} for k,f,s,w in conditions],references=reference,methodOrder=quad_order)
  (a.out/(robot+'-replays.json')).write_text(json.dumps(payload,separators=(',',':')))
+(a.out/'featured-examples.json').write_text(json.dumps({
+ 'quad':[{'id':k,'name':{'turbulent':'Turbulent Wind','heavy':'Heavy Plant'}.get(k,f),'seed':s,'defaultLevel':w} for k,f,s,w in conditions],
+ 'car':{'scenario':'strips_p3','seed':91090,'placement':90,'defaultLevel':.3},
+ 'selection':'Outcome-selected demonstrations. Each condition keeps one fixed evaluated seed across all nine controllers and seven wind levels. Full-evaluation counts use all 100 seeds or placements per setting.'
+},indent=2))
 assert all(r['survived']==r['canonicalSurvived'] for r in runs),'Rerun/ledger mismatch: inspect before publishing.'
-print('All 83 outcomes match their evaluation records.',flush=True)
+print(f'All {len(runs)} outcomes match their evaluation records.',flush=True)

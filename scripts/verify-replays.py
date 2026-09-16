@@ -3,16 +3,24 @@ import itertools,json,math
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]/'assets/data'
 manifest=json.loads((root/'provenance.json').read_text());stats=json.loads((root/'simulation-statistics.json').read_text())
-assert len(manifest['episodes'])==83
+assert len(manifest['episodes'])==398
 assert all(r['survived']==r['canonicalSurvived'] for r in manifest['episodes'])
 for robot,dt in [('quad',.05),('car',.1)]:
  data=json.loads((root/f'{robot}-replays.json').read_text())
  if robot=='quad':
-  assert data['conditions']==[{'id':'figure8','name':'Figure-8','seed':97,'defaultLevel':12}]
+  assert data['conditions']==[
+   {'id':'figure8','name':'Figure-8','seed':97,'defaultLevel':12},
+   {'id':'circle','name':'Circle','seed':0,'defaultLevel':11},
+   {'id':'line_y','name':'Y-line','seed':7,'defaultLevel':10},
+   {'id':'star','name':'Star','seed':7,'defaultLevel':10},
+   {'id':'turbulent','name':'Turbulent Wind','seed':31,'defaultLevel':9},
+   {'id':'heavy','name':'Heavy Plant','seed':7,'defaultLevel':10},
+  ]
   assert len(data['methodOrder'])==9
-  assert all(r['survived'] for r in data['runs'] if r['method']=='raya')
-  assert all(not r['survived'] for r in data['runs'] if r['method']!='raya' and r['level']==12)
-  assert all(not r['survived'] for r in data['runs'] if r['method']=='sampling' and r['level'] in [10,11])
+  figure8=[r for r in data['runs'] if r['scenario']=='figure8']
+  assert all(r['survived'] for r in figure8 if r['method']=='raya')
+  assert all(not r['survived'] for r in figure8 if r['method']!='raya' and r['level']==12)
+  assert all(not r['survived'] for r in figure8 if r['method']=='sampling' and r['level'] in [10,11])
   expected={(c['id'],w,c['seed'],m) for c in data['conditions'] for w in range(6,13) for m in ['nominal','sampling','posthoc_cbf','cbf','posthoc_hj','hj','posthoc','margin','raya']}
  else:expected=set(itertools.product(['strips_p3'],[.2,.25,.3,.35,.4],[91090],['nominal','margin','posthoc','raya']))
  keys={(r['scenario'],r['level'],r['seed'],r['method']) for r in data['runs']}
