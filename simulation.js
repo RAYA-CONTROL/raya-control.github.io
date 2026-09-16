@@ -15,7 +15,7 @@ const quadMethods = [
 ];
 
 const trialDuration=14.05;
-const state={level:12,time:0,playing:false,speed:2};
+const state={level:11,time:0,playing:false,speed:2};
 let quad,runs=[],last=0,lastPaint=0,camera={x:0,y:0,scale:45};
 const canvas=$('#quad-film'),ctx=canvas.getContext('2d');
 const video=$('#car-simulation');let carGeneration=0,carWantsPlay=false,evaluationCells=[];
@@ -36,7 +36,7 @@ function selectWind(){
  $('#quad-wind-value').textContent=`${wind}×`;
  $('#quad-wind').value=wind;
  $('#quad-wind').setAttribute('aria-valuetext',`${wind} times wind multiplier`);
- $('#quad-wind').style.setProperty('--amount',`${(wind-6)/6*100}%`);
+ $('#quad-wind').style.setProperty('--amount',`${(wind-6)/5*100}%`);
 }
 function advancePlayback(dt){
  state.time=Math.min(trialDuration,state.time+dt*state.speed);

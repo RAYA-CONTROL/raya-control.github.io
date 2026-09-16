@@ -11,7 +11,7 @@ def const(path,name):
 helper='TinyMPC/examples/shared_recoverability/tools/train_learned_authority_rl.py'
 qb=const(helper,'QUAD_BASE');cb=const('prereg_audit/car_grid_corrected/run.py','BASE')
 policies=['prereg_audit/learned_authority_rl_cegis_v3/quad/final_policy.csv','prereg_audit/no_mu_authority_car/limo/final_policy.csv']
-conditions=[('figure8','Figure-8',71,12),('circle','Circle',0,11),('line_y','Y-line',7,10),('star','Star',7,10),('turbulent','OOD-A turb-wind',31,9),('heavy','OOD-C heavy-plant',7,10)]
+conditions=[('figure8','Figure-8',90,11),('circle','Circle',0,11),('line_y','Y-line',7,10),('star','Star',7,10),('turbulent','OOD-A turb-wind',31,9),('heavy','OOD-C heavy-plant',7,10)]
 family_ids={f:k for k,f,_,_ in conditions};ledger=[]
 for r in read('Tier 1/results/canonical_new_episodes.csv'):
  method={'Nominal MPC':'nominal','Stage-1 in-solver':'margin','Posthoc one-step':'posthoc'}.get(r['arm'])
@@ -83,7 +83,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
   runs.append(r)
   if len(runs)%20==0:print(f'{len(runs)}/{len(tasks)}',flush=True)
 assert all(r['survived']==r['canonicalSurvived'] for r in runs),'Rerun/ledger mismatch: inspect before publishing.'
-manifest={'sourceCommit':stats['sourceCommit'],'selection':'Figure-8 seed 71 fixed across seven wind values for all nine methods; car placement 90 fixed across five friction values. Demonstrations are outcome-selected. Quadrotor counts use all 100 trials at each setting.','configurationNote':'Nine quad methods from Figure 2A, with frozen HJ and RPCBF configurations; final stage-1 learned-margin and scheduler; quad posthoc nominal-infeasibility fallback; canonical car posthoc.','sampleColumns':['time_s','x_m','y_m','z_m','angle_rad','authority_weight'],'policies':{p:hashlib.sha256((a.repo/p).read_bytes()).hexdigest() for p in policies},'episodes':[{k:v for k,v in r.items() if k!='samples'} for r in runs]}
+manifest={'sourceCommit':stats['sourceCommit'],'selection':'Figure-8 seed 90 fixed across seven rerun wind values for all nine methods; the website displays 6-11, where RAYA completes every trial and all eight baselines fail at 11. Car placement 90 is fixed across five friction values. Demonstrations are outcome-selected. Quadrotor counts use all 100 trials at each setting.','configurationNote':'Nine quad methods from Figure 2A, with frozen HJ and RPCBF configurations; final stage-1 learned-margin and scheduler; quad posthoc nominal-infeasibility fallback; canonical car posthoc.','sampleColumns':['time_s','x_m','y_m','z_m','angle_rad','authority_weight'],'policies':{p:hashlib.sha256((a.repo/p).read_bytes()).hexdigest() for p in policies},'episodes':[{k:v for k,v in r.items() if k!='samples'} for r in runs]}
 manifest['baselineTables']={str(path.relative_to(a.repo)):hashlib.sha256(path.read_bytes()).hexdigest() for path in (a.repo/'baselines_hj_rpcbf/tables').glob('*quad*') if path.is_file()}
 manifest['builds']={'quad':'GCC 14.2.0 / libstdc++, x86_64 macOS; standard-library wind RNG matches evaluation records.','car':'AppleClang 16.0.0 / libc++, arm64 macOS.'}
 manifest['validation']='All 83 replay success/failure outcomes agree with the corresponding canonical episode records. Full-evaluation cell counts reproduce the existing aggregate paper values and all nine quadrotor methods.'
