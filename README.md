@@ -35,7 +35,7 @@ For static hosting, publish `index.html`, `styles.css`, `app.js`, `simulation.js
 
 The supplied manuscript is the source of the title, abstract, measured results, and figures. Author names, affiliations, and the funding acknowledgment were subsequently supplied by the user. The Paper, Code, and Video header buttons are intentionally empty placeholders pending final URLs; the supplied PDF remains available at `assets/raya-paper.pdf`.
 
-The publication header uses the trimmed motor-loss recovery recording as a muted, looping background under a blue-green fade and translucent content block. The paper title is intentionally the largest type on the page; the background video is decorative and hidden from assistive technology.
+The publication header uses the top-down RAYA motor-loss recording as a muted, looping background under a blue-green fade. The paper title is intentionally the largest type on the page; the background video is decorative and hidden from assistive technology.
 
 ## Simulation replay and video provenance
 
