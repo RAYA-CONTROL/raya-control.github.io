@@ -63,7 +63,7 @@ main > .section > .container > .title.is-3{margin-bottom:2rem}
 
 /* A quiet hardware-recovery backdrop gives the paper title a clear visual anchor. */
 .publication-header{position:relative;isolation:isolate;overflow:hidden;min-height:590px;background:#092433}
-.publication-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 68%;z-index:-3;filter:saturate(.78) contrast(.92) brightness(.75);transform:scale(1.015)}
+.publication-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 63%;z-index:-3;filter:saturate(.78) contrast(.92) brightness(.75);transform:scale(1.015)}
 .publication-background-overlay{position:absolute;inset:0;z-index:-2;background:linear-gradient(112deg,rgba(5,24,39,.91),rgba(7,45,61,.78) 54%,rgba(0,77,85,.66))}
 .publication-header .hero-body{display:flex;align-items:center;min-height:590px;padding:4.5rem 1.5rem!important}
 .publication-header .column.has-text-centered{padding:2.6rem 2.8rem 2.8rem;text-shadow:0 2px 18px rgba(0,0,0,.62)}
