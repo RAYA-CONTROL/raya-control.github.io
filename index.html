@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="author" content="Ishaan Mahajan, Charles Chen, Frederike Dümbgen, Brian Plancher">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="RAYA: Learning Where and When to Intervene for Robot Recovery. Research on recoverability-aware control for quadrotors and autonomous vehicles.">
+<meta name="description" content="How RAYA learns where and when to intervene for robot recovery. Explore the idea, interactive wind simulations, low-grip driving, and real Crazyflie flights.">
 <title>RAYA: Learning Where and When to Intervene for Robot Recovery</title>
 <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 <link rel="stylesheet" href="static/css/bulma.min.css">
 <link rel="stylesheet" href="static/css/nerfies.css">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="blog.css">
 <script src="simulation.js" defer></script>
 <script src="app.js" defer></script>
 <!-- Adapted from https://github.com/nerfies/nerfies.github.io (CC BY-SA 4.0). No analytics. -->
 </head>
-<body>
+<body class="research-blog">
 <a class="skip" href="#main">Skip to content</a>
 <main id="main">
 <section class="hero publication-header">
@@ -22,6 +23,7 @@
  <div class="publication-background-overlay" aria-hidden="true"></div>
  <div class="hero-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column has-text-centered">
   <h1 class="title is-1 publication-title"><span class="raya-name">RAYA</span>: Learning Where and When to Intervene for Robot Recovery</h1>
+  <p class="hero-deck">A robot can predict failure and still be unable to prevent it.</p>
   <div class="is-size-5 publication-authors">
    <span class="author-block"><a href="https://ishaanmahajan.com" target="_blank" rel="noopener">Ishaan Mahajan</a><sup>1,2</sup>,</span>
    <span class="author-block"><a href="https://www.linkedin.com/in/charles-chen-pi314159265/" target="_blank" rel="noopener">Charles Chen</a><sup>1,2</sup>,</span>
@@ -36,35 +38,45 @@
   </div>
  </div></div></div></div>
 </section>
-<section class="hero teaser">
+<nav class="story-nav" aria-label="In this article"><span>In this article</span><a href="#abstract">Motivation</a><a href="#method">The idea</a><a href="#quadrotor-simulation">Wind</a><a href="#f1tenth-simulation">Low grip</a><a href="#hardware">Real flights</a><a href="#conclusion">Conclusion</a></nav>
+<section class="section story-opening" id="abstract"><div class="story-prose">
+ <p class="chapter-label">01 / The problem</p>
+ <h2>Motivation</h2>
+ <p>Unexpected aerodynamic forces or a shifted payload may consume a quadrotor’s thrust and attitude authority. Unmapped surfaces may similarly lack sufficient friction for a ground vehicle’s control authority.</p>
+ <p>Such failures are always preceded by a point past which no admissible input can enable recovery. Thus, knowing that a system is unsafe is not the same as being able to save it. It is important to consider whether the controller can identify that recoverability is deteriorating while sufficient time and actuation authority remain.</p>
+</div></section>
+<section class="section" id="method"><div class="container is-max-desktop">
+ <div class="story-prose"><p class="chapter-label">02 / The idea</p><h2 class="title is-3">Recoverability-Aware Yielding of Authority</h2>
+ <p>We introduce <span class="raya-name">RAYA</span> (Recoverability-Aware Yielding of Authority), a hybrid learned–analytic control framework that uses a learned recoverability signal (Fig. 1). A neural model is trained on narrow platform-specific datasets and evaluated zero-shot on unseen trajectories, disturbance processes, plant shifts, and friction layouts.</p>
+ <p>This model predicts the minimum task-specific safety margin over a finite closed-loop recovery horizon from signals available to the deployed controller, and a local approximation of that margin reshapes predictive feasibility while selecting the current action.</p></div>
+<div class="hero teaser">
  <div class="container is-max-desktop"><div class="hero-body">
   <figure><img class="framework-figure" src="assets/RAYA-framework.png" alt="RAYA framework: collect closed-loop rollouts, train a recoverability predictor and a reallocation scheduler, then deploy on quadrotors and autonomous vehicles.">
   <figcaption class="subtitle has-text-centered"><span class="raya-name">RAYA</span> learns where recoverability should enter the controller and when task objectives should yield, enabling recovery under unseen disturbances.</figcaption></figure>
  </div></div>
-</section>
-<section class="section abstract-section" id="abstract"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column is-four-fifths">
- <h2 class="title is-3 has-text-centered">Abstract</h2>
- <div class="content has-text-justified"><p>A robot can predict failure and still be unable to prevent it. By the time a safety mechanism reacts, the nominal plan may already have spent the control authority that recovery requires, and fixed task priorities may block whatever response remains. Our key insight is that both aspects are decided inside the controller. Recoverability must inform actions while they are chosen rather than veto them afterward, and task objectives must be adapted as recoverability shrinks. Building on this, we present <span class="raya-name">RAYA</span>, a hybrid learned–analytic framework that places a learned finite-horizon recoverability margin inside an optimal controller with hard constraints and pairs it with a bounded learned scheduler that shifts task weights to facilitate recovery. Across 7,200 simulation episodes per controller spanning quadrotor and autonomous-vehicle benchmarks, <span class="raya-name">RAYA</span> not only improves survival rates, but also transfers the learned components zero-shot to unseen trajectories, disturbances, plant shifts, and friction layouts. We developed an embedded realization of <span class="raya-name">RAYA</span> and deployed it onboard a 35g Crazyflie quadrotor. Across 40 combined hardware flights under wind with either aerodynamic mismatch or an unmodeled 40% motor-command loss, each of three baselines fails in all trials, while <span class="raya-name">RAYA</span> completes 10/10 six-cycle missions. Code and artifacts are open-sourced.</p></div>
-</div></div></div></section>
-<section class="section" id="method"><div class="container is-max-desktop">
- <h2 class="title is-3 has-text-centered">Recoverability-Aware Yielding of Authority</h2>
- <div class="content"><p>A robot can predict failure and still be unable to prevent it. A nominal plan can consume the control authority required for recovery, while fixed tracking priorities prevent the controller from using the options that remain. <span class="raya-name">RAYA</span> addresses both decisions within a single optimal controller.</p></div>
+</div>
  <div class="columns method-columns">
-  <div class="column"><h3 class="title is-5">Where: inside the optimizer</h3><p>A learned finite-horizon recoverability margin is locally linearized and incorporated into the model predictive control problem. Recovery information shapes the predicted trajectory while the current action is selected.</p></div>
-  <div class="column"><h3 class="title is-5">When: as recoverability shrinks</h3><p>A bounded learned scheduler reweights selected task objectives. Lateral tracking may yield on the quadrotor; position and speed tracking may yield on the car. The optimizer retains its pre-existing hard constraints.</p></div>
+  <div class="column"><span class="idea-number">01</span><h3 class="title is-5">Where: inside the optimizer</h3><p>The learned recoverability margin enters the MPC problem as a locally linearized constraint. It influences the predicted trajectory while the action is being chosen, so the plan already accounts for recovery.</p></div>
+  <div class="column"><span class="idea-number">02</span><h3 class="title is-5">When: let the task yield</h3><p>A bounded learned scheduler changes selected objective weights. The quadrotor can relax lateral tracking; the car can relax position and speed tracking. The optimizer keeps its pre-existing hard constraints.</p></div>
  </div>
+ <div class="story-prose"><p>The same margin also enters a lightweight bounded scheduler, together with deployable state and actuator-risk features, so objectives that can yield are temporarily downweighted while recovery-critical channels retain or gain weight. The prediction dynamics, state and input bounds, and platform-specific constraints remain unchanged. Thus, learning tracks when recovery is being lost and how strongly selected task objectives should yield, while the underlying optimal controller decides the final action subject to hard constraints.</p></div>
+ <details class="paper-abstract"><summary>Read the paper’s abstract</summary>
+ <div class="content has-text-justified"><p>A robot can predict failure and still be unable to prevent it. By the time a safety mechanism reacts, the nominal plan may already have spent the control authority that recovery requires, and fixed task priorities may block whatever response remains. Our key insight is that both aspects are decided inside the controller. Recoverability must inform actions while they are chosen rather than veto them afterward, and task objectives must be adapted as recoverability shrinks. Building on this, we present <span class="raya-name">RAYA</span>, a hybrid learned–analytic framework that places a learned finite-horizon recoverability margin inside an optimal controller with hard constraints and pairs it with a bounded learned scheduler that shifts task weights to facilitate recovery. Across 7,200 simulation episodes per controller spanning quadrotor and autonomous-vehicle benchmarks, <span class="raya-name">RAYA</span> not only improves survival rates, but also transfers the learned components zero-shot to unseen trajectories, disturbances, plant shifts, and friction layouts. We developed an embedded realization of <span class="raya-name">RAYA</span> and deployed it onboard a 35g Crazyflie quadrotor. Across 40 combined hardware flights under wind with either aerodynamic mismatch or an unmodeled 40% motor-command loss, each of three baselines fails in all trials, while <span class="raya-name">RAYA</span> completes 10/10 six-cycle missions. Code and artifacts are open-sourced.</p></div>
+</details>
 </div></section>
 <section class="section" id="results"><div class="container is-max-desktop">
- <h2 class="title is-3 has-text-centered">Simulation Results</h2>
- <div class="content"><p>We evaluate 7,200 simulation episodes per controller: 4,200 quadrotor episodes and 3,000 autonomous-vehicle episodes. Learned components remain fixed during evaluation, including zero-shot tests on unseen trajectories, disturbance processes, plant shifts, and friction layouts.</p></div>
+ <div class="story-prose"><p class="chapter-label">03 / Simulation</p><h2 class="title is-3">Turn up the disturbance.</h2>
+ <p>A recovery controller should work when conditions change. We evaluate 7,200 episodes per controller across quadrotors and autonomous vehicles, keeping the learned components fixed. The tests include unseen trajectories, disturbance processes, plant changes, and friction layouts.</p>
+ <p>The plots below describe the full evaluation. The replays let you inspect selected runs and see when a controller reaches its failure limits.</p></div>
  <section class="simulation-platform" id="quadrotor-simulation" aria-labelledby="quadrotor-simulation-heading">
  <h3 class="title is-3 simulation-platform-title" id="quadrotor-simulation-heading">Quadrotor</h3>
+ <div class="story-prose"><p>For the quadrotor, increasing wind makes it harder to stay on the reference path while preserving stability. We compare nine controllers, including nominal MPC, sampling-based safety filtering, CBF and HJ variants, learned-margin controllers, and <span class="raya-name">RAYA</span>.</p><p>Here, CBF means control barrier function and HJ means Hamilton–Jacobi. These methods bring different forms of safety or recovery information into the control decision. The plot asks how far each can go as disturbances grow.</p></div>
  <figure class="research-figure"><img src="assets/recoverable-operating-envelope-quad.png" loading="lazy" alt="Figure 2: quadrotor survival across wind scales and zero-shot transfer to held-out evaluation conditions."><figcaption><strong>Quadrotor disturbance robustness and zero-shot transfer.</strong> The interpolated 50%-survival disturbance threshold increases from 7.335 to 7.950 m/s² (+8.4%). At disturbance multiplier 8, Figure-8 survival increases from 47% to 62%. At the strongest disturbances, survival collapses across controllers as actuation limits are reached.</figcaption></figure>
 
 
  <div class="simulation-examples" id="experiments">
-  <h4 class="title is-4">Interactive wind simulation</h4>
-  <p class="example-intro">Nine controllers, the same selected mission and disturbance. Choose a flight condition and wind multiplier, then press Play to compare the recorded responses. Each view shows SUCCESS or FAILURE when its recorded outcome is reached.</p>
+  <p class="chapter-label">Try it yourself</p><h4 class="title is-4">How much wind can each controller take?</h4>
+  <p class="example-intro">Start with Figure-8 at 9×, then compare 10×, 11×, and 12×. In this selected trial, the sampling-based filter fails first; at 12×, only <span class="raya-name">RAYA</span> completes the mission. Choose another flight condition to explore a different test.</p>
   <div class="simulation-viewer" id="quad-viewer">
    <div class="quad-mode-bar"><label for="quad-mode"><span>Flight condition</span><select id="quad-mode" disabled><option value="figure8">Figure-8</option><option value="circle">Circle</option><option value="line_y">Y-line</option><option value="star">Star</option><option value="turbulent">Turbulent Wind</option><option value="heavy">Heavy Plant</option></select></label></div>
    <div class="wind-film-heading"><label for="quad-wind">Wind multiplier <output id="quad-wind-value" for="quad-wind">12×</output></label><output id="quad-clock">0.00 / 14.05 s</output></div>
@@ -74,15 +86,17 @@
    <div class="simple-transport"><button type="button" id="quad-play" disabled>Play</button><label>Speed <select id="quad-speed"><option value="0.5">0.5×</option><option value="1">1×</option><option value="2" selected>2×</option></select></label></div>
    <p class="trial-error" id="quad-error" role="alert" hidden></p>
   </div>
- <p class="example-note">Each condition uses one fixed evaluated trial across all nine controllers and wind levels. Changing the condition or wind restarts the 14.05-second mission. Colored paths and altitude come from simulation logs; failed drones hold at their first failed state. Average success rates use all 100 evaluation trials at the selected condition and wind. Wind multipliers are not airspeeds.</p>
+ <p class="example-note">These are selected demonstrations of recovery differences. Each condition uses one fixed evaluated trial across all nine controllers and wind levels. Changing the condition or wind restarts the 14.05-second mission. Paths come from simulation logs; failed drones hold at their first failed state. The average success rates use all 100 trials at the selected condition and wind. Wind multipliers are not airspeeds.</p>
+
 
  </div>
  </section>
  <section class="simulation-platform" id="f1tenth-simulation" aria-labelledby="f1tenth-simulation-heading">
  <h3 class="title is-3 simulation-platform-title" id="f1tenth-simulation-heading">Autonomous Vehicle</h3>
+ <div class="story-prose"><p>On the ground, the disturbance takes a different form: a car enters a surface with less grip than its controller expects. Tire forces become limited, but the controller still has a position and speed target to pursue.</p><p>We test periodic low-grip strips with different friction levels, exposure periods, and placements. The question is the same as in flight: can task priorities adapt before recovery becomes impossible?</p></div>
  <figure class="research-figure"><img src="assets/recoverable-operating-envelope-f1tenth.png" loading="lazy" alt="Figure 3: F1TENTH survival and friction-loss versus exposure operating envelopes."><figcaption><strong>Autonomous-vehicle recovery under friction loss.</strong> <span class="raya-name">RAYA</span> expands the periodic-strip conditions meeting 50% survival from 5/15 for nominal MPC to 8/15. The interpolated 50%-survival exposure increases from 1.515 s for the strongest baseline to 2.096 s (+38.4%).</figcaption></figure>
  <div class="simulation-examples" id="car-experiment">
-  <h4 class="title is-4">Representative simulation</h4>
+  <h4 class="title is-4">Watch what happens when grip runs out.</h4>
   <p class="example-intro">Example autonomous-vehicle runs near the low-friction recovery limit, below which survival drops sharply across controllers.</p>
   <div class="simulation-viewer" id="car-viewer">
    <video id="car-simulation" muted playsinline preload="metadata" src="assets/videos/f1tenth-friction-0.30.mp4?v=tracking-limit" poster="assets/videos/f1tenth-friction-0.30.jpg" aria-label="Four-controller F1TENTH periodic-strips simulation comparison"></video>
@@ -95,15 +109,10 @@
   <p class="example-note">The video shows one selected trial; percentages average all tested friction levels, strip periods, and placements.</p>
  </div>
  </section>
- <div class="overall-simulation-results">
- <h3 class="title is-4">Overall simulation results</h3>
- <div class="content"><p>Aggregate survival over all evaluated conditions is reported below. The table reports the paper’s full evaluation. The visualizations above show recorded simulation trials.</p></div>
- <div class="table-container"><table class="table is-fullwidth research-table"><colgroup><col class="method-column"><col class="result-column"><col class="result-column"></colgroup><thead><tr><th scope="col">Method</th><th scope="col">Quadrotor</th><th scope="col">AV</th></tr></thead><tbody><tr><th scope="row">Nominal MPC</th><td>34.24</td><td>35.93</td></tr><tr><th scope="row">Post hoc Learned Margin</th><td>34.45</td><td>39.43</td></tr><tr><th scope="row">In-solver Learned Margin</th><td>37.48</td><td>40.57</td></tr><tr class="raya-row"><th scope="row"><span class="raya-name">RAYA</span></th><td><strong>40.83</strong></td><td><strong>48.73</strong></td></tr></tbody></table></div>
- </div>
 
 </div></section>
 <section class="section" id="hardware"><div class="container is-max-desktop">
- <h2 class="title is-3 has-text-centered">Embedded Hardware Experiments</h2>
+ <div class="story-prose"><p class="chapter-label">04 / Real flights</p><h2 class="title is-3">From simulation to a 35 g drone.</h2><p>A simulation result is only part of the story. On hardware, recovery must happen with a small processor, a tight control deadline, and disturbances the controller does not directly measure.</p></div>
 
  <div class="content"><p><span class="raya-name">RAYA</span> runs fully onboard the STM32F405 microcontroller of a 35 g Crazyflie quadrotor at 20 Hz. Each controller is tested in five flights under each of two conditions: a 3 g attachment with wind, and an unmodeled 40% front-left motor-command loss with wind.</p></div>
  <figure class="research-figure hardware-figure"><img src="assets/RAYA-in-action.png" loading="lazy" alt="Crazyflie hardware testbed with two-fan airflow, a drag attachment, and front and top views of the flight path."><figcaption><strong>Six-cycle onboard recovery testbed.</strong> Both conditions use the same Figure-8 mission under two-fan airflow. No controller receives a measurement or model of the disturbance or mismatch.</figcaption></figure>
@@ -113,7 +122,8 @@
  <div class="table-container"><table class="table is-fullwidth research-table"><colgroup><col class="method-column"><col class="result-column"><col class="result-column"></colgroup><thead><tr><th scope="col">Method</th><th scope="col">3 g attachment + wind</th><th scope="col">40% M1 loss + wind</th></tr></thead><tbody><tr><th scope="row">Nominal MPC</th><td>0 / 5</td><td>0 / 5</td></tr><tr><th scope="row">In-solver CBF</th><td>0 / 5</td><td>0 / 5</td></tr><tr><th scope="row">Post hoc Learned Margin</th><td>0 / 5</td><td>0 / 5</td></tr><tr class="raya-row"><th scope="row"><span class="raya-name">RAYA</span></th><td><strong>5 / 5</strong></td><td><strong>5 / 5</strong></td></tr></tbody></table></div>
  <div class="content"><p>One <span class="raya-name">RAYA</span> motor-loss flight contacted the floor, recovered, completed the remaining trajectory, and landed under control. Mission completion under motor loss is 5/5, with 4/5 flights completed without contact. The worst observed <span class="raya-name">RAYA</span> control-step latency is 44.52 ms, within the 50 ms onboard deadline.</p></div>
 </div></section>
-<section class="section" id="acknowledgments"><div class="container is-max-desktop"><h2 class="title is-3">Acknowledgments</h2><div class="content"><p>This project was supported by the National Science Foundation (Awards 2411369, 2535096). Any opinions, findings, conclusions, or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the funding organizations.</p></div></div></section>
+<section class="section story-ending" id="conclusion"><div class="story-prose"><p class="chapter-label">05 / Conclusion</p><h2>Conclusion</h2><p>We introduced <span class="raya-name">RAYA</span>, built on a simple premise. Recoverability should not be checked only after the action is chosen. It should shape the plan, and what the task is allowed to sacrifice, while recovery is still possible. Across aerial and ground embodiments, <span class="raya-name">RAYA</span> improves recovery over post hoc intervention, expands the recoverable operating envelope, and transfers without retraining to unseen tasks, disturbances, plant shifts, and friction layouts. The same design also transfers to embedded hardware, where <span class="raya-name">RAYA</span> maintains recovery under aerodynamic mismatch and unmodeled actuator degradation.</p></div></section>
+<section class="section" id="acknowledgments"><div class="container is-max-desktop story-prose"><h2 class="title is-3">Acknowledgments</h2><div class="content"><p>This project was supported by the National Science Foundation (Awards 2411369, 2535096). Any opinions, findings, conclusions, or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the funding organizations.</p></div></div></section>
 </main>
 <footer class="footer"><div class="container"><div class="columns is-centered"><div class="column is-8"><div class="content">
 <p>This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>

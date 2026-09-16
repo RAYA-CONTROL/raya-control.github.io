@@ -1,0 +1,86 @@
+/* Editorial presentation for the research story; experiment styles live in styles.css. */
+.research-blog{background:#fffefa;color:#303b35}
+.research-blog .raya-name{margin-inline-end:0}
+.blog-masthead{max-width:1440px;margin:auto;min-height:70px;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.blog-brand{display:flex;align-items:center;gap:18px;font-size:20px;font-weight:700;color:#243c30}
+.blog-brand>span:last-child{border-left:1px solid #ccd6cd;padding-left:18px;font-size:13px;font-weight:400;letter-spacing:.04em}
+.masthead-link{font-size:13px;font-weight:600;color:#305d47}
+.masthead-link:hover,.blog-brand:hover{color:#006e50}
+.research-blog .publication-header .container.is-max-desktop{max-width:1320px!important}
+.research-blog .publication-header .hero-body{padding:4rem 2rem!important}
+.research-blog .publication-header .column.has-text-centered{padding:1.5rem 1rem}
+.research-blog .publication-title{font-size:clamp(42px,4.7vw,68px)!important;line-height:1.09!important;letter-spacing:-1.8px!important;max-width:1200px}
+.story-eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:700;color:#d1e6df;margin:0 0 24px}
+.hero-deck{max-width:660px;margin:24px auto 0;color:#e1ece8;font-size:21px;line-height:1.55;font-family:'Castoro',Georgia,serif}
+.research-blog .publication-authors{margin-top:2rem;font-size:21px!important}
+.research-blog .publication-authors a{color:#009e73!important}
+.research-blog .publication-authors a:hover,.research-blog .publication-authors a:focus-visible{color:#007e5c!important}
+.research-blog .publication-affiliations{font-size:16px}
+.story-nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;align-items:center;gap:28px;padding:18px 24px;background:#fffefaf5;backdrop-filter:blur(12px);border-bottom:1px solid #dce2d9;font-size:13px;overflow-x:auto;white-space:nowrap}
+.story-nav>span{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#788579;margin-right:12px}
+.story-nav a{color:#415448;font-weight:600;text-decoration:none}
+.story-nav a:hover,.story-nav a:focus-visible{color:#009e73}
+.research-blog section[id],.research-blog div[id=experiments]{scroll-margin-top:80px}
+.research-blog main>.section{padding:5rem 1.5rem}
+.research-blog main>.section>.container{max-width:1080px!important}
+.story-prose{max-width:720px;margin-inline:auto}
+.story-prose p,.research-blog #hardware>.container>.content p{font-family:'Castoro',Georgia,serif;font-size:19px;line-height:1.85;margin-bottom:1.25em}
+.story-prose h2,.research-blog .story-prose .title.is-3{font-family:'Google Sans',sans-serif;font-size:38px;line-height:1.2;letter-spacing:-.9px;font-weight:700;margin:0 0 28px;color:#243e30}
+.story-prose .chapter-label,.chapter-label{font-family:'Noto Sans',sans-serif;font-size:11px;line-height:1.4;letter-spacing:.16em;text-transform:uppercase;color:#647969;font-weight:700;margin:0 0 20px}
+.story-prose .story-lead{font-size:24px;line-height:1.65;color:#354d3d}
+.story-pullquote{border-left:3px solid #009e73;padding:10px 0 10px 26px;margin:38px 0;font-family:'Castoro',Georgia,serif;font-size:29px;line-height:1.45;color:#006e50}
+.research-blog #method{background:#f1f5ef;border-top:1px solid #dce5da;border-bottom:1px solid #dce5da}
+.research-blog #method h2{color:#009e73}
+.research-blog .teaser{margin:40px auto 32px}
+.research-blog .teaser .hero-body{padding:0!important}
+.research-blog .framework-figure{max-width:1080px;background:white;border:1px solid #e0e6dd;border-radius:6px;padding:16px}
+.research-blog .teaser .subtitle{max-width:740px;font-size:14px;line-height:1.7;color:#617565;margin-top:18px}
+.research-blog .method-columns{margin:40px auto;max-width:960px;gap:32px}
+.research-blog .method-columns .column{border-top:2px solid #adcbbb;padding:24px 0}
+.idea-number{font-size:12px;letter-spacing:.12em;color:#6c8575;display:block;margin-bottom:16px}
+.research-blog .method-columns h3{font-size:23px;font-weight:700;margin-bottom:14px}
+.research-blog .method-columns p{font-size:16px;line-height:1.8}
+.paper-abstract{max-width:720px;margin:32px auto 0;border-top:1px solid #cddacf;border-bottom:1px solid #cddacf;padding:18px 0}
+.paper-abstract summary{font-size:14px;color:#355f46;font-weight:600;cursor:pointer}
+.paper-abstract .content{margin-top:20px;font-size:15px;text-align:left!important}
+.research-blog .simulation-platform{border-top:1px solid #c7d6c9;padding-top:3rem;margin-top:3.5rem}
+.research-blog .simulation-platform-title{font-size:28px;letter-spacing:-.4px;max-width:720px;margin-inline:auto}
+.research-blog .research-figure{margin:36px 0}
+.research-blog .research-figure img{max-width:1080px}
+.research-blog .research-figure figcaption{max-width:800px;margin-inline:auto;text-align:left;font-size:14px;line-height:1.75;color:#5e7064}
+.research-blog .simulation-examples{border-top:0;padding-top:12px;margin-top:30px}
+.research-blog .simulation-examples>.title{font-size:26px;font-weight:700;letter-spacing:-.4px}
+.research-blog .example-intro{max-width:840px;font-size:16px;line-height:1.8;margin-bottom:24px}
+.research-blog .simulation-viewer{border-color:#c8d8cd;border-radius:10px;box-shadow:0 8px 32px #203d2910}
+.research-blog .example-note{font-size:12px;line-height:1.8;color:#66796d}
+.reading-note{max-width:720px;margin:30px auto 0;border-left:3px solid #009e73;padding:16px 24px;background:#eef5ef}
+.reading-note strong{display:block;font-size:13px;color:#006e50;margin-bottom:7px}
+.reading-note p{font-size:15px;line-height:1.8}
+.research-blog .overall-simulation-results{border-top:1px solid #c7d6c9;padding-top:3rem}
+.research-blog .overall-simulation-results>h3{max-width:720px;margin-inline:auto;font-size:26px}
+.research-blog .research-table{background:transparent;font-size:16px}
+.research-blog .research-table th,.research-blog .research-table td{padding:17px 14px}
+.research-blog .raya-row{background:#e8f4eb}
+.research-blog #hardware{border-top:1px solid #dce5da;background:#f5f7f1}
+.research-blog #hardware>.container>.content{max-width:720px;margin:0 auto 30px}
+.research-blog .hardware-recordings{margin-top:40px}
+.research-blog .recording-intro{font-size:16px;line-height:1.8}
+.research-blog .hardware-grid .raya-name{margin:0}
+.research-blog .story-ending{background:#eaf3eb;border-top:1px solid #c7d9cb}
+.paper-reading-link{display:inline-flex;gap:35px;align-items:center;border-bottom:2px solid #009e73;padding:8px 0;font-size:17px;font-weight:700;color:#006e50}
+.paper-reading-link:hover{color:#004c37}
+.research-blog #acknowledgments{padding-block:3rem}
+.research-blog #acknowledgments>.container{max-width:720px!important}
+.research-blog .footer p{font-size:13px;line-height:1.8;color:#69746b}
+.research-blog .footer{border-top:1px solid #dce5da;background:#f4f5ef;padding:2.5rem 1.5rem}
+.research-blog .footer a{color:#006e50}
+@media(max-width:750px){
+ .blog-masthead{min-height:60px;padding:14px 20px}.blog-brand{gap:10px}.blog-brand>span:last-child{padding-left:10px;font-size:11px}.masthead-link{font-size:11px;max-width:105px;text-align:right}
+ .research-blog .publication-header .hero-body{padding:2.75rem 1.1rem!important}.research-blog .publication-header .column.has-text-centered{padding:0 .5rem}
+ .research-blog .publication-title{font-size:clamp(36px,8vw,48px)!important;letter-spacing:-1px!important}.hero-deck{font-size:18px;margin-top:20px}.story-eyebrow{font-size:10px;margin-bottom:20px}
+ .research-blog .publication-authors{font-size:18px!important}.research-blog .publication-affiliations{font-size:14px}.research-blog .publication-links{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}.research-blog .publication-links .button{font-size:13px}
+ .story-nav{justify-content:flex-start;gap:22px;padding:15px 20px;font-size:12px}.story-nav>span{display:none}
+ .research-blog main>.section{padding:3.25rem 1.25rem}.story-prose h2,.research-blog .story-prose .title.is-3{font-size:30px;letter-spacing:-.6px}.story-prose p,.research-blog #hardware>.container>.content p{font-size:17px;line-height:1.8}.story-prose .story-lead{font-size:21px}.story-pullquote{font-size:24px;padding-left:18px;margin:28px 0}
+ .research-blog .method-columns{display:block;margin:26px auto}.research-blog .method-columns .column{margin-bottom:12px}.research-blog .framework-figure{padding:6px}
+ .research-blog .simulation-examples>.title{font-size:23px}.research-blog .example-intro{font-size:15px}.research-blog .research-table{font-size:12px}.research-blog .research-table th,.research-blog .research-table td{padding:12px 7px}.reading-note{padding:14px 18px}
+}
