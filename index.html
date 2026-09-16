@@ -66,14 +66,14 @@
   <h4 class="title is-4">Interactive wind simulation</h4>
   <p class="example-intro">Nine controllers, the same Figure-8 mission. Choose a wind multiplier, then press Play to compare the recorded responses. Each view shows SUCCESS or FAILURE when its recorded outcome is reached.</p>
   <div class="simulation-viewer" id="quad-viewer">
-   <div class="wind-film-heading"><label for="quad-wind">Wind multiplier <output id="quad-wind-value" for="quad-wind">11×</output></label><output id="quad-clock">0.00 / 14.05 s</output></div>
-   <div class="wind-control disturbance-control"><input type="range" id="quad-wind" min="6" max="11" step="1" value="11" disabled><div class="wind-ticks" aria-hidden="true"><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span><span>11×</span></div></div>
+   <div class="wind-film-heading"><label for="quad-wind">Wind multiplier <output id="quad-wind-value" for="quad-wind">12×</output></label><output id="quad-clock">0.00 / 14.05 s</output></div>
+   <div class="wind-control disturbance-control"><input type="range" id="quad-wind" min="6" max="12" step="1" value="12" disabled><div class="wind-ticks" aria-hidden="true"><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span><span>11×</span><span>12×</span></div></div>
    <canvas id="quad-film" aria-label="Nine synchronized simulated drones in separate flight areas. Each method shows a green SUCCESS or red FAILURE overlay at its recorded outcome; accessible statuses are included in the legend."></canvas>
    <div class="quad-film-legend" id="quad-legend" aria-label="Controller legend" aria-live="polite"></div>
    <div class="simple-transport"><button type="button" id="quad-play" disabled>Play</button><label>Speed <select id="quad-speed"><option value="0.5">0.5×</option><option value="1">1×</option><option value="2" selected>2×</option></select></label></div>
    <p class="trial-error" id="quad-error" role="alert" hidden></p>
   </div>
- <p class="example-note">Selected demonstration: seed 90, shared across all controllers and displayed wind levels. <span class="raya-name">RAYA</span> completes every displayed setting; all eight baselines fail at 11×. Changing wind restarts the 14.05-second mission at that setting. Colored paths and altitude come from simulation logs; failed drones hold at their first failed state. Wind multipliers are not airspeeds.</p>
+ <p class="example-note">Selected demonstration: seed 97, shared across all controllers and displayed wind levels. <span class="raya-name">RAYA</span> completes every setting through 12×. The sampling-based safety filter fails at 10× and 11×; all eight baselines fail at 12×. Changing wind restarts the 14.05-second mission at that setting. Colored paths and altitude come from simulation logs; failed drones hold at their first failed state. Wind multipliers are not airspeeds.</p>
 
  </div>
  </section>

@@ -36,7 +36,7 @@ function selectWind(){
  $('#quad-wind-value').textContent=`${wind}×`;
  $('#quad-wind').value=wind;
  $('#quad-wind').setAttribute('aria-valuetext',`${wind} times wind multiplier`);
- $('#quad-wind').style.setProperty('--amount',`${(wind-6)/5*100}%`);
+ $('#quad-wind').style.setProperty('--amount',`${(wind-6)/6*100}%`);
 }
 function advancePlayback(dt){
  state.time=Math.min(trialDuration,state.time+dt*state.speed);
