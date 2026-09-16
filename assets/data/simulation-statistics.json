@@ -1,0 +1,4008 @@
+{
+  "sourceCommit": "1a34eb69cb13cecb5b8788eea0baac2204a256fd",
+  "aggregates": {
+    "quad": {
+      "nominal": 34.24,
+      "margin": 37.48,
+      "posthoc": 34.45,
+      "raya": 40.83,
+      "posthoc_cbf": 34.17,
+      "cbf": 36.74,
+      "posthoc_hj": 34.24,
+      "sampling": 24.19,
+      "hj": 36.43
+    },
+    "car": {
+      "nominal": 35.93,
+      "margin": 40.57,
+      "posthoc": 39.43,
+      "raya": 48.73
+    }
+  },
+  "cells": [
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 60,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 35,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 11,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "nominal",
+      "survived": 88,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "nominal",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "nominal",
+      "survived": 45,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "nominal",
+      "survived": 25,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "nominal",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "nominal",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "nominal",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 93,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 79,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 55,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 32,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 93,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 80,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 53,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 34,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 20,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 93,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 83,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 53,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 35,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 93,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 81,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 55,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 33,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 62,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 40,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "margin",
+      "survived": 93,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "margin",
+      "survived": 77,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "margin",
+      "survived": 50,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "margin",
+      "survived": 27,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "margin",
+      "survived": 10,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "margin",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "margin",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 90,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 48,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 18,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 48,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 48,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 90,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 18,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 36,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "posthoc",
+      "survived": 88,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "posthoc",
+      "survived": 72,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "posthoc",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "posthoc",
+      "survived": 25,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "posthoc",
+      "survived": 11,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "posthoc",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "posthoc",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 83,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 62,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 40,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 23,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 16,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 83,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 39,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 23,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 16,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 84,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 38,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 23,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 15,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 85,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 59,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 39,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 23,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 15,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 65,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 43,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 20,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "raya",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "raya",
+      "survived": 80,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "raya",
+      "survived": 56,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "raya",
+      "survived": 32,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "raya",
+      "survived": 14,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "raya",
+      "survived": 4,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "raya",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.2,
+      "method": "raya",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.25,
+      "method": "raya",
+      "survived": 36,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 60,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 8,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 42,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 50,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.3,
+      "method": "raya",
+      "survived": 43,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.35,
+      "method": "raya",
+      "survived": 54,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.4,
+      "method": "raya",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.2,
+      "method": "margin",
+      "survived": 22,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.25,
+      "method": "margin",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 53,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 8,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 22,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.3,
+      "method": "margin",
+      "survived": 38,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 45,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 90,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 94,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.35,
+      "method": "margin",
+      "survived": 49,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.4,
+      "method": "margin",
+      "survived": 60,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 36,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 81,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 55,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 22,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 37,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 50,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 59,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.2,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.25,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.3,
+      "method": "nominal",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.35,
+      "method": "nominal",
+      "survived": 50,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.4,
+      "method": "nominal",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 41,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n4",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 32,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 79,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "random_n6",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 22,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 37,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 54,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "single_patch",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 10,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p3",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 65,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p4",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.2,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.25,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.3,
+      "method": "posthoc",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.35,
+      "method": "posthoc",
+      "survived": 62,
+      "total": 100
+    },
+    {
+      "robot": "car",
+      "scenario": "strips_p5",
+      "level": 0.4,
+      "method": "posthoc",
+      "survived": 100,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 60,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 34,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 88,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 72,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 25,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 18,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "posthoc_cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "posthoc_cbf",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "posthoc_cbf",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "posthoc_cbf",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "posthoc_cbf",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "posthoc_cbf",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "posthoc_cbf",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 52,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 52,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 32,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 61,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 39,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 15,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 92,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 77,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 49,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 27,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 55,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 31,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "cbf",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "cbf",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "cbf",
+      "survived": 53,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "cbf",
+      "survived": 32,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "cbf",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "cbf",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "cbf",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 28,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 27,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 74,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 26,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 18,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 7,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 60,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 35,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 11,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "posthoc_hj",
+      "survived": 88,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "posthoc_hj",
+      "survived": 73,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "posthoc_hj",
+      "survived": 47,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "posthoc_hj",
+      "survived": 25,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "posthoc_hj",
+      "survived": 9,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "posthoc_hj",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "posthoc_hj",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 82,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 54,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 82,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 50,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 8,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 2,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 85,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 54,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 18,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 86,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 55,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 29,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 16,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 8,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 48,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 17,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "sampling",
+      "survived": 80,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "sampling",
+      "survived": 56,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "sampling",
+      "survived": 24,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "sampling",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "sampling",
+      "survived": 3,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "sampling",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "sampling",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 51,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "figure8",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 4,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 77,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 51,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "circle",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 5,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 77,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 51,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 12,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "line_y",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 91,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 78,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 53,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 30,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 19,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "star",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 6,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 62,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 39,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 16,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 1,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "turbulent",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 0,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 6.0,
+      "method": "hj",
+      "survived": 92,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 7.0,
+      "method": "hj",
+      "survived": 77,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 8.0,
+      "method": "hj",
+      "survived": 49,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 9.0,
+      "method": "hj",
+      "survived": 27,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 10.0,
+      "method": "hj",
+      "survived": 13,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 11.0,
+      "method": "hj",
+      "survived": 4,
+      "total": 100
+    },
+    {
+      "robot": "quad",
+      "scenario": "heavy",
+      "level": 12.0,
+      "method": "hj",
+      "survived": 2,
+      "total": 100
+    }
+  ]
+}

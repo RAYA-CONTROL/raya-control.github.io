@@ -21,28 +21,31 @@ npm run check
 - `index.html`: paper narrative, abstract, results, hardware evidence, PDF links.
 - `static/css/`: Nerfies template and Bulma styles.
 - `styles.css`: RAYA additions, responsive layout, focus styles, reduced-motion support.
-- `app.js`: data-backed quadrotor and vehicle replays, recorded failure markers, and two synchronized hardware video grids.
-- `track-scene.js`: original F1TENTH renderer assets and camera projection for four cars in one shared scene.
-- `assets/data/`: 520 simulated episodes and their configurations, source commit, and policy hashes.
+- `app.js`: two synchronized hardware video grids.
+- `simulation.js`: interactive quadrotor wind replay and fixed AV video playback.
+- `track-scene.js` and `assets/scene/`: retained source for the earlier shared-track viewer; not loaded by the current page.
+- `assets/data/`: 83 paired simulated episodes and full-evaluation counts and their configurations, source commit, and policy hashes.
 - `scripts/export-replays.py`: reproducible export from the supplied safe-reachability checkout.
 - `assets/`: supplied manuscript, user-provided framework/hardware/results PNGs, and resource icons.
 - `server.mjs`: dependency-free local preview server with streamed responses, HTTP byte-range requests, and HEAD support for video playback.
 
-For static hosting, publish `index.html`, `styles.css`, `app.js`, `track-scene.js`, `static/`, and `assets/`. No build step is needed. Google Fonts enhances the typography when online; system fonts are used as fallback.
+For static hosting, publish `index.html`, `styles.css`, `app.js`, `simulation.js`, `static/`, and `assets/`. No build step is needed. Google Fonts enhances the typography when online; system fonts are used as fallback.
 
 ## Scientific provenance
 
-The supplied manuscript is the source of the title, abstract, measured results, and figures. Author names, affiliations, and the funding acknowledgment were subsequently supplied by the user. The Paper, Code, and Video header buttons are intentionally empty placeholders pending final URLs; a local PDF remains available in the research text.
+The supplied manuscript is the source of the title, abstract, measured results, and figures. Author names, affiliations, and the funding acknowledgment were subsequently supplied by the user. The Paper, Code, and Video header buttons are intentionally empty placeholders pending final URLs; the supplied PDF remains available at `assets/raya-paper.pdf`.
 
 ## Simulation replay and video provenance
 
-The interactive examples replay 520 episodes generated from the supplied safe-reachability source code. Positions and failure times come from simulator logs. Quadrotor paths are projected onto a still frame from the supplied hardware footage for intuition; this is not a camera-calibrated reconstruction. Failed trajectories freeze at their first recorded failure, with a red cross on the robot. The page highlights selected demonstrations (quad seed 0; car placement 50), explicitly chosen to show three baseline failures and RAYA completion at the featured condition. The wind/friction slider preserves time and selects a full logged run for that same seed. No outcomes or failure thresholds are edited.
+Simulation Results is split into two clearly labeled platform sections. Quadrotor contains its result plot followed immediately by the interactive wind replay. F1TENTH contains its result plot followed immediately by the fixed comparison video. The aggregate table follows both sections, then the page moves into hardware experiments. The quadrotor wind slider selects separate fixed-wind trials from 6× through 12×, using logged positions and altitude. One canvas shows nine synchronized flight areas with a numbered legend in Figure 2A's bar order and colors: Nominal MPC, Sampling-based safety filter, Posthoc CBF, In-solver CBF, Posthoc HJ, In-solver HJ, Posthoc Learned Margin, In-solver Learned Margin, and RAYA. Figure-8 and seed 71 stay fixed across the seven wind settings. RAYA completes all seven; at the default 12× wind, all eight baselines fail. Each selection restarts the 14.05-second trial, preserving whether playback was running or paused. Playback defaults to 2×. The AV section plays the fixed μ = 0.30 / period 3 s comparison with Play/Pause and Speed controls, without a friction slider or numeric friction label.
 
-- Quadrotor: Figure-8 wind and heavy-plant transfer, wind multipliers 6–12, paired seeds 0–4, four controllers (280 episodes).
-- Vehicle: periodic strips at periods 3, 4, and 5 s, friction μ 0.20–0.40, four evenly spaced placements, four controllers (240 episodes).
-- The supplied checkout’s frozen quadrotor configuration differs from the attached paper’s final evaluation. The page identifies these as new code-based replays and keeps the manuscript’s aggregate tables separate. Details and reproduction commands: [`assets/data/README.md`](assets/data/README.md).
+All 83 rerun outcomes match the corresponding final evaluation records. The AV metric cards average all 1,500 periodic-strip trials per controller (five friction coefficients, three strip periods, 100 placements): Nominal MPC 32.0%, In-solver Learned Margin 39.7%, Post hoc Learned Margin 35.1%, RAYA 51.2%. The fixed video uses seed 91090: the three baselines fail at 13.8 s and RAYA completes 40 s. There is no AV result table. The simulation table retains the full paper evaluation; changing a displayed seed cannot change aggregate survival rates. The original evaluation and rerun configurations, including the required quadrotor random-number library, are documented in [`assets/data/README.md`](assets/data/README.md). No outcomes are invented or altered. Quad failures hold at the first logged failure. Each method’s view shows a full-panel red FAILURE overlay with its recorded failure time, or green SUCCESS once it completes the mission. Every panel also reports that method’s 100-seed average success rate for the selected wind. No Ready/Flying/altitude text is displayed; the numbered legend lists method names. Each panel uses the same spatial scale across wind settings.
 
-Two 2×2 hardware recording grids sit immediately below the hardware image. Both use the order Nominal MPC, In-solver CBF, Post hoc Learned Margin, RAYA. Each group supports play/pause, restart, scrubbing, and speed selection. The opening wait is removed from each clip, aligning playback approximately to **visually identified takeoff**; shorter clips hold their final frame. The remaining flights are retained at their original speed. Trim offsets and original/output durations are recorded in `assets/videos/hardware-trims.json`; `scripts/trim-hardware-videos.py` regenerates them from the untouched Downloads originals. Native controls allow individual viewing. The supplied car comparison remains explicitly labeled as simulation footage under Interactive Examples.
+The slider switches between independently logged fixed-wind trials; it does not change disturbance midway through a simulated run. The only transport controls are Play/Pause and Speed. Playback starts paused. Car videos run at native simulation time and are generated by `scripts/render-friction-videos.py` from the actual logged trajectories.
+
+A standalone motor-loss floor-recovery video sits after the two hardware video grids, immediately above the hardware results table. Its original is `raya-motor-loss-ground-recovery.mp4` in Downloads; the first 18 s of waiting are removed, with the rest retained at original speed. It is encoded as 1280 px H.264 (CRF 21), without audio, with fast-start metadata; the poster comes from 5 s into the trimmed clip. Reproduction metadata is in `assets/videos/ground-recovery-trim.json`.
+
+Two 2×2 hardware recording grids sit immediately below the hardware image. Both use the order Nominal MPC, In-solver CBF, Post hoc Learned Margin, RAYA. Each group supports play/pause and speed selection. The opening wait is removed from each clip, aligning playback approximately to **visually identified takeoff**; shorter clips hold their final frame. The remaining flights are retained at their original speed. Trim offsets and original/output durations are recorded in `assets/videos/hardware-trims.json`; `scripts/trim-hardware-videos.py` regenerates them from the untouched Downloads originals. Native controls allow individual viewing. The original supplied car comparison is retained in the assets; the current viewer uses new friction-specific renders from its source renderer.
 
 Browser copies are H.264 at 1280 px width, fast-start metadata, and no audio. Originals remain unchanged in Downloads:
 
@@ -58,7 +61,7 @@ Browser copies are H.264 at 1280 px width, fast-start metadata, and no audio. Or
 | `raya-motor.mp4` | `raya-motor-loss-topdown-trajectory.mp4` |
 | `f1tenth-compare.mp4` | `f1tenth-periodic-strips-compare.mp4` |
 
-All videos are in `assets/videos/`. The composite background uses the 2-second frame from the RAYA motor clip; an adjacent floor patch covers the original drone. Drone sprites are canvas drawings. The vehicle scene uses the original car artwork, circuit, ice, and walls from `visualizations/f1tenth/render_figure8_raya_chase.py` at source commit `1a34eb69cb13cecb5b8788eea0baac2204a256fd`, with a fixed overview camera and four simultaneous replays. See `assets/scene/README.md`. Replays start paused, including for reduced-motion users.
+All videos are in `assets/videos/`. The `f1tenth-friction-*.mp4` files are generated comparisons for μ 0.20–0.40, with matching JPG posters. Their source renderer, assets, trace conventions and reproduction commands are documented with the simulation data. Hardware footage is used only in the hardware section.
 
 RAYA’s learned margin is empirical, not a formal Hamilton–Jacobi reachability certificate.
 

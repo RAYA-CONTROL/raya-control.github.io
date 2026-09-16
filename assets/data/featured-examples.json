@@ -1,31 +1,17 @@
 {
-  "selection": "Outcome-selected demonstrations requested by the author: all three baselines fail while RAYA completes at the highlighted setting. Not an unbiased estimate of aggregate performance.",
-  "quad": {
-    "scenario": "figure8",
-    "seed": 0,
-    "highlightedLevel": 10,
-    "levels": [
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12
-    ]
-  },
+  "quad": [
+    {
+      "id": "figure8",
+      "name": "Figure-8",
+      "seed": 71,
+      "defaultLevel": 12
+    }
+  ],
   "car": {
-    "scenario": "strips_p4",
-    "placement": 50,
-    "seed": 91050,
-    "highlightedLevel": 0.3,
-    "levels": [
-      0.4,
-      0.35,
-      0.3,
-      0.25,
-      0.2
-    ]
+    "scenario": "strips_p3",
+    "seed": 91090,
+    "placement": 90,
+    "defaultLevel": 0.3
   },
-  "playback": "The same seed or placement is used at every slider setting. Changing the slider preserves playback time and selects another full logged rollout."
+  "selection": "Outcome-selected demonstrations. Seeds/placement remain fixed across each slider. Full-evaluation counts use all 100 seeds or placements per setting."
 }

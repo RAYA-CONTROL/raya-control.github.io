@@ -1,0 +1,11 @@
+{
+  "source": "/Users/ishaanmahajan/Downloads/raya-motor-loss-ground-recovery.mp4",
+  "asset": "assets/videos/raya-motor-loss-ground-recovery.mp4",
+  "sourceSha256": "6bbd87f52861cf8d0d6ff3a0505c821b7ca746bc878924f05afc2d94bef06cbc",
+  "trimStartSeconds": 18,
+  "sourceDurationSeconds": 65.4654,
+  "outputDurationSeconds": 47.4474,
+  "posterTimeSeconds": 5,
+  "basis": "Visually identified takeoff; entire remaining flight retained at original speed.",
+  "encoding": "ffmpeg -ss 18 -i SOURCE -vf scale=1280:-2 -c:v libx264 -preset fast -crf 21 -pix_fmt yuv420p -movflags +faststart -an OUTPUT"
+}

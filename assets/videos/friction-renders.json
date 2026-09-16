@@ -1,0 +1,67 @@
+{
+  "sourceCommit": "1a34eb69cb13cecb5b8788eea0baac2204a256fd",
+  "sourceRenderer": "visualizations/f1tenth/render_figure8_comparison.py",
+  "renderScript": "scripts/render-friction-videos.py",
+  "trajectoryProvenance": "../data/provenance.json",
+  "seed": 91090,
+  "placementIndex": 90,
+  "stripPeriod": 3,
+  "phase": 2.715,
+  "playback": "Synchronized; 1 video second = 1 simulation second, plus 1 second final hold.",
+  "files": [
+    {
+      "path": "assets/videos/f1tenth-friction-0.20.mp4",
+      "mu": 0.2,
+      "sha256": "efa0ae08fc3138295d78d57c07e67ca2b657e413eea3c1e900fcb3084685ae5a",
+      "duration": 41,
+      "simulationDuration": 40,
+      "fps": 15,
+      "width": 1280,
+      "height": 720,
+      "failureDisplayLabel": "Tracking limit"
+    },
+    {
+      "path": "assets/videos/f1tenth-friction-0.25.mp4",
+      "mu": 0.25,
+      "sha256": "1502d6d31827e209ade9b1e1f79c277162eaec270d1d2bb2acadc38ef0fe2eaa",
+      "duration": 41,
+      "simulationDuration": 40,
+      "fps": 15,
+      "width": 1280,
+      "height": 720,
+      "failureDisplayLabel": "Tracking limit"
+    },
+    {
+      "path": "assets/videos/f1tenth-friction-0.30.mp4",
+      "mu": 0.3,
+      "sha256": "5c5b772d5c6d20dd82c892db3710b178337d7dbb736ecf03b28e2c1e280926e8",
+      "duration": 41,
+      "simulationDuration": 40,
+      "fps": 15,
+      "width": 1280,
+      "height": 720,
+      "failureDisplayLabel": "Tracking limit"
+    },
+    {
+      "path": "assets/videos/f1tenth-friction-0.35.mp4",
+      "mu": 0.35,
+      "sha256": "68a815814e03a56f4451dea9c942dc6d696bdab3c6a154be908e05f2cce59fc4",
+      "duration": 41,
+      "simulationDuration": 40,
+      "fps": 15,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "assets/videos/f1tenth-friction-0.40.mp4",
+      "mu": 0.4,
+      "sha256": "d3e2662b262069d61cf71d2ed0ab3876ba11ad78f5976faabed23ef447416a48",
+      "duration": 41,
+      "simulationDuration": 40,
+      "fps": 15,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "failureLabelNote": "All displayed failure categories use Tracking limit; recorded causes and outcomes remain unchanged in source logs and replay data."
+}
