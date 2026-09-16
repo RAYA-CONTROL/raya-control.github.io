@@ -40,7 +40,6 @@ function selectWind(){
  runs=quadMethods.map(m=>quad.runs.find(r=>r.scenario===state.scenario&&r.level===wind&&r.seed===seed&&r.method===m.id));
  if(!runs.every(Boolean))throw new Error('Missing paired simulation trial');
  $('#quad-mode').value=state.scenario;
- $('#quad-seed').textContent=`Seed ${seed}`;
  $('#quad-wind-value').textContent=`${wind}×`;
  $('#quad-wind').value=wind;
  $('#quad-wind').setAttribute('aria-valuetext',`${wind} times wind multiplier`);

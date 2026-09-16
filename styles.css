@@ -210,7 +210,7 @@ button:disabled{cursor:wait;opacity:.5}
 }
 
 /* Selectable wind trials, with a shared nine-method legend. */
-.quad-mode-bar{display:flex;justify-content:space-between;align-items:end;gap:20px;padding:20px 25px;background:#f8fbf9}.quad-mode-bar label{display:flex;flex-direction:column;gap:7px;color:#344f3e;font-size:14px;font-weight:700}.quad-mode-bar select{min-width:240px;padding:10px 38px 10px 12px;border:1px solid #abc5b7;border-radius:5px;background:#fff;color:#234b38;font:inherit;font-size:18px}.quad-mode-bar>span{padding-bottom:10px;color:#687d70;font-size:14px;font-weight:600}
+.quad-mode-bar{display:flex;padding:20px 25px;background:#f8fbf9}.quad-mode-bar label{display:flex;flex-direction:column;gap:7px;color:#344f3e;font-size:14px;font-weight:700}.quad-mode-bar select{min-width:240px;padding:10px 38px 10px 12px;border:1px solid #abc5b7;border-radius:5px;background:#fff;color:#234b38;font:inherit;font-size:18px}
 .wind-film-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 25px 15px;background:#f8fbf9}
 .wind-film-heading>div{display:flex;align-items:center;gap:20px}.wind-film-heading strong{font-size:24px;color:#006e50}.wind-film-heading span{font-size:14px;color:#687d70}
 .wind-film-heading #quad-clock{position:static;font-size:14px;font-weight:600}
@@ -224,7 +224,7 @@ button:disabled{cursor:wait;opacity:.5}
 .film-legend-item{display:flex;align-items:flex-start;gap:9px;min-width:0}.film-key{background:var(--method);color:white;flex:none;width:22px;height:22px;border-radius:50%;text-align:center;font-size:12px;line-height:22px;font-weight:700;margin-top:1px}
 .film-legend-item strong{display:block;font-size:14px;line-height:1.4;min-height:40px;color:#354e3e}
 @media(max-width:750px){
- .quad-mode-bar{align-items:stretch;padding:16px 14px;flex-direction:column;gap:9px}.quad-mode-bar select{width:100%;min-width:0;font-size:16px}.quad-mode-bar>span{padding:0;font-size:12px}
+ .quad-mode-bar{padding:16px 14px}.quad-mode-bar label{width:100%}.quad-mode-bar select{width:100%;min-width:0;font-size:16px}
  .wind-film-heading{padding:17px 14px 12px;gap:8px}.wind-film-heading>div{gap:10px}.wind-film-heading strong{font-size:20px}.wind-film-heading span,.wind-film-heading #quad-clock{font-size:11px}
  .wind-film-heading>label{font-size:17px;gap:10px}.wind-film-heading #quad-wind-value{font-size:22px}
  .wind-control{padding:0 14px 16px}.wind-ticks{font-size:12px}
