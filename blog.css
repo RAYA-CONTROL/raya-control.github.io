@@ -84,6 +84,9 @@
 .paper-reading-link:hover{color:#004c37}
 .research-blog #acknowledgments{padding-block:3rem}
 .research-blog #acknowledgments>.container{max-width:720px!important}
+.research-blog #bibtex{padding-block:3rem;border-top:1px solid #dce5da}
+.citation-code{max-width:100%;padding:24px;border:1px solid #dce2d9;border-radius:8px;background:#f1f5ef;color:#303b35;font-size:14px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto}
+.citation-code code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:inherit;background:transparent;padding:0}
 .research-blog .footer p{font-size:13px;line-height:1.8;color:#69746b}
 .research-blog .footer{border-top:1px solid #dce5da;background:#f4f5ef;padding:2.5rem 1.5rem}
 .research-blog .footer a{color:#006e50}
