@@ -37,3 +37,37 @@ function frame(now){
 }
 requestAnimationFrame(frame);
 document.querySelectorAll('[data-placeholder-link]').forEach(link=>link.addEventListener('click',event=>event.preventDefault()));
+
+const citationCopy=document.querySelector('.citation-copy');
+const citationText=document.querySelector('#citation-text');
+const citationStatus=document.querySelector('#citation-status');
+let citationFeedbackTimer;
+function resetCitationFeedback(){
+  delete citationCopy.dataset.copied;
+  citationCopy.title='Copy citation';
+  citationCopy.setAttribute('aria-label','Copy citation');
+  citationStatus.textContent='';
+}
+citationCopy?.addEventListener('click',async()=>{
+  clearTimeout(citationFeedbackTimer);
+  resetCitationFeedback();
+  citationCopy.disabled=true;
+  try{
+    await navigator.clipboard.writeText(citationText.textContent);
+    citationCopy.dataset.copied='true';
+    citationCopy.title='Copied';
+    citationCopy.setAttribute('aria-label','Citation copied');
+    citationStatus.textContent='Copied';
+    citationFeedbackTimer=setTimeout(resetCitationFeedback,2500);
+  }catch{
+    citationText.closest('pre').focus();
+    const range=document.createRange();
+    range.selectNodeContents(citationText);
+    const selection=window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    citationStatus.textContent='Citation selected. Press Ctrl+C or ⌘C to copy.';
+  }finally{
+    citationCopy.disabled=false;
+  }
+});
