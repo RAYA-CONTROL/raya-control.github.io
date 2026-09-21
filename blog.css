@@ -7,7 +7,6 @@
 .masthead-link{font-size:13px;font-weight:600;color:#305d47}
 .masthead-link:hover,.blog-brand:hover{color:#006e50}
 .research-blog .publication-header .container.is-max-desktop{max-width:1320px!important}
-.research-blog .publication-header,.research-blog .publication-header .hero-body{min-height:0}
 .research-blog .publication-header .hero-body{padding:4rem 2rem!important}
 .research-blog .publication-header .column.has-text-centered{padding:1.5rem 1rem}
 .research-blog .publication-title{font-size:clamp(42px,4.7vw,68px)!important;line-height:1.09!important;letter-spacing:-1.8px!important;max-width:1200px}
